@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "mocha --reporter spec --bail --check-leaks test/",
+    "testRoutes": "mocha --reporter spec --bail --check-leaks test/routes",
+    "testAPI": "mocha --reporter spec --bail --check-leaks test/api_requests"
   },
   "dependencies": {
     "body-parser": "~1.16.0",
@@ -13,5 +16,12 @@
     "morgan": "~1.7.0",
     "request": "^2.79.0",
     "request-promise": "^4.1.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "request-debug": "^0.2.0"
   }
 }
