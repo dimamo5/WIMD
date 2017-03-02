@@ -6,18 +6,10 @@
                 <xs:element name="entry">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="ew"/>
-                            <xs:element name="hw"/>
-                            <xs:element name="pr"/>
-                            <xs:element name="sound">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="wav"/>
-                                        <xs:element name="wpr"/>
-                                    </xs:sequence>
-                                </xs:complexType>
-                            </xs:element>
-                            <xs:group ref="sound"/>
+                            <xs:element name="ew" type="xs:string"/>
+                            <xs:element name="hw" type="xs:string"/>
+                            <xs:element name="pr" type="xs:string"/>
+                            <xs:element ref="sound"/>
                             <xs:element name="def">
                                 <xs:complexType>
                                     <xs:sequence>
@@ -32,24 +24,24 @@
                                                   <xs:element name="ca">
                                                   <xs:complexType>
                                                   <xs:sequence>
-                                                  <xs:element name="cat"/>
+                                                  <xs:element name="cat" type="xs:string"/>
                                                   </xs:sequence>
                                                   </xs:complexType>
                                                   </xs:element>
                                                   <xs:element name="dx">
                                                   <xs:complexType>
                                                   <xs:sequence>
-                                                  <xs:element name="dxt"/>
-                                                  <xs:element name="dxn"/>
+                                                  <xs:element name="dxt" type="xs:string"/>
+                                                  <xs:element name="dxn" type="xs:string"/>
                                                   </xs:sequence>
                                                   </xs:complexType>
                                                   </xs:element>
-                                                  <xs:element name="vi"/>
-                                                  <xs:element name="un"/>
+                                                  <xs:element name="vi" type="xs:string"/>
+                                                  <xs:element name="un" type="xs:string"/>
                                                   <xs:element name="sx">
                                                   <xs:complexType>
                                                   <xs:sequence>
-                                                  <xs:element name="sxn"/>
+                                                  <xs:element name="sxn" type="xs:string"/>
                                                   </xs:sequence>
                                                   </xs:complexType>
                                                   </xs:element>
@@ -65,22 +57,22 @@
                             <xs:element name="uro">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="ure"/>
-                                        <xs:element name="pr"/>
-                                        <xs:element name="fl"/>
-                                        <xs:group ref="sound"/>
+                                        <xs:element name="ure" type="xs:string"/>
+                                        <xs:element name="pr" type="xs:string"/>
+                                        <xs:element name="fl" type="xs:string"/>
+                                        <xs:element ref="sound"/>
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
                             <xs:element name="bio">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="sname"/>
-                                        <xs:element name="pname"/>
-                                        <xs:element name="name"/>
-                                        <xs:element name="bvr"/>
-                                        <xs:element name="bddate"/>
-                                        <xs:element name="tx"/>
+                                        <xs:element name="sname" type="xs:string"/>
+                                        <xs:element name="pname" type="xs:string"/>
+                                        <xs:element name="name" type="xs:string"/>
+                                        <xs:element name="bvr" type="xs:string"/>
+                                        <xs:element name="bddate" type="xs:date"/>
+                                        <xs:element name="tx" type="xs:string"/>
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
@@ -91,10 +83,12 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:group name="sound">
-        <xs:sequence>
-            <xs:element name="wav"/>
-            <xs:element name="wpr"/>
-        </xs:sequence>
-    </xs:group>
+    <xs:element name="sound">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="wav" type="xs:string"/>
+                <xs:element name="wpr" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>
