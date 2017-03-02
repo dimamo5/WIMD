@@ -17,7 +17,7 @@
                                                 <xs:sequence>
                                                   <xs:element name="risk_factor">
                                                   <xs:complexType>
-                                                  <xs:attribute name="id"/>
+                                                  <xs:attribute name="id" type="xs:string"/>
                                                   </xs:complexType>
                                                   </xs:element>
                                                 </xs:sequence>
@@ -43,8 +43,8 @@
                                                 <xs:sequence>
                                                   <xs:element name="condition">
                                                   <xs:complexType>
-                                                  <xs:attribute name="date"/>
-                                                  <xs:attribute name="id"/>
+                                                  <xs:attribute name="date" type="xs:date"/>
+                                                  <xs:attribute name="id" type="xs:string"/>
                                                   </xs:complexType>
                                                   </xs:element>
                                                 </xs:sequence>
@@ -55,8 +55,8 @@
                                                 <xs:sequence>
                                                   <xs:element name="symptom">
                                                   <xs:complexType>
-                                                  <xs:attribute name="id"/>
-                                                  <xs:attribute name="date"/>
+                                                  <xs:attribute name="id" type="xs:string"/>
+                                                  <xs:attribute name="date" type="xs:date"/>
                                                   </xs:complexType>
                                                   </xs:element>
                                                 </xs:sequence>
@@ -67,8 +67,8 @@
                                                 <xs:sequence>
                                                   <xs:element name="test">
                                                   <xs:complexType>
-                                                  <xs:attribute name="id"/>
-                                                  <xs:attribute name="result"/>
+                                                  <xs:attribute name="id" type="xs:string"/>
+                                                  <xs:attribute name="result" type="xs:string"/>
                                                   </xs:complexType>
                                                   </xs:element>
                                                 </xs:sequence>
@@ -78,6 +78,7 @@
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>
+                        <xs:attribute name="id" type="xs:integer"/>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
