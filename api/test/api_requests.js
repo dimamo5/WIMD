@@ -1,10 +1,12 @@
 const mocha = require('mocha');
 const expect = require('chai').expect;
-const api = require('../routes/infermedica');
+const mwAPI = require('../routes/merrian_webster');
+const infermedicaAPI = require('../routes/infermedica');
+
 
 describe('Obtains data from Infermedica API', function () {
     it('should get a list with possible conditions', (done) => {
-        api.getConditions()
+        infermedicaAPI.getConditions()
             .then((response) => {
                 expect(response).to.be.a('array');
                 expect(response).to.have.length.above(0);
@@ -16,7 +18,7 @@ describe('Obtains data from Infermedica API', function () {
     });
 
     it('should get a list with possible lab tests', (done) => {
-        api.getLabTests()
+        infermedicaAPI.getLabTests()
             .then((response) => {
                 expect(response).to.be.a('array');
                 expect(response).to.have.length.above(0);
@@ -28,7 +30,7 @@ describe('Obtains data from Infermedica API', function () {
     });
 
     it('should get a list with possible risk factors', (done) => {
-        api.getRiskFactors()
+        infermedicaAPI.getRiskFactors()
             .then((response) => {
                 expect(response).to.be.a('array');
                 expect(response).to.have.length.above(0);
@@ -40,7 +42,7 @@ describe('Obtains data from Infermedica API', function () {
     });
 
     it('should get a list with possible symptoms', (done) => {
-        api.getSymptoms()
+        infermedicaAPI.getSymptoms()
             .then((response) => {
                 expect(response).to.be.a('array');
                 expect(response).to.have.length.above(0);
@@ -50,8 +52,14 @@ describe('Obtains data from Infermedica API', function () {
                 done(err);
             })
     });
+})
 
-
-
-
+describe('Obtains data from Merrian-Webster API',function(){
+    it('Search Term',function(){
+        mwAPI.getInfoTerm('doctor')
+        .then((response)=>{
+            expect(response).to.be.a('string');
+            expect(response).to.have.length.above(25);
+        })
+    });
 })
