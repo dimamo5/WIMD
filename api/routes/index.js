@@ -6,7 +6,7 @@ const fs = require('fs');
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  res.send('index');
+  res.send('WIMD');
 });
 
 router.get('/refresh_info', function (req, res) {
