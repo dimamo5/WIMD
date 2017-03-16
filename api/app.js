@@ -4,7 +4,6 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 var auth = require('./routes/auth');
 
 var app = express()
@@ -13,7 +12,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 
 app.use('/', index);
-app.use('/users', users);
 app.use('/auth',auth)
 
 // catch 404 and forward to error handler
