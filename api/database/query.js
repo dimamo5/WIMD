@@ -1,4 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
+const ObjectID = require('mongodb').ObjectID;
 const crypto = require('crypto');
 
 // Connection URL
@@ -28,9 +29,13 @@ function login(username,password){
 function register(username,password,mail){
     var hashPass = crypto.createHash('sha256').update(password).digest('hex');
 
-    const collection = dbConn.collection('auth');
+    const auth = dbConn.collection('auth');
+    const users = dbConn.collection('users');
 
-    return collection.insertOne({username:username,password:hashPass,mail:mail,verified:false})
+    return users.insertOne({name:"Diogo",birthdate:new Date("1995-08-05"),gender:"M"})
+    .then((user)=>{
+        return auth.insertOne({"_id":ObjectID(user.insertedId),username:username,password:hashPass,mail:mail,verified:false})
+    })
 }
 
 module.exports.login=login;

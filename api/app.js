@@ -12,7 +12,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 
 app.use('/auth',auth);
-app.use(auth.jwtverify)
+app.use(auth.jwtverify) //Middleware to verify jwt token
 app.use('/', index);
 
 // catch 404 and forward to error handler
