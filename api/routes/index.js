@@ -2,7 +2,11 @@ const express = require('express');
 const infermedica = require('../request/infermedica');
 const mw = require('../request/merrian_webster');
 const router = express.Router();
-const fs = require('fs');
+const conditions = require('./conditions');
+const riskfactors = require('./riskfactors');
+const labtests = require('./labtests');
+const symptoms = require('./symptoms');
+
 
 /* GET home page. */
 router.get('/', function (req, res) {
@@ -19,50 +23,6 @@ router.get('/refresh_info', function (req, res) {
     })
 })
 
-router.get('/symptoms', function (req, res) {
-  fs.readFile('resources/list_symptoms.json', function (err, data) {
-    if (err) {
-      console.log('Error Reading File with List of Symptoms');
-      res.sendStatus(500);
-    } else {
-      res.json(JSON.parse(data));
-    }
-  })
-})
-
-router.get('/riskfactors', function (req, res) {
-  fs.readFile('resources/list_risk_factors.json', function (err, data) {
-    if (err) {
-      console.log('Error Reading File with List of Risk Factors');
-      res.sendStatus(500);
-    } else {
-      res.json(JSON.parse(data));
-    }
-  })
-})
-
-router.get('/labtests', function (req, res) {
-  fs.readFile('resources/list_lab_tests.json', function (err, data) {
-    if (err) {
-      console.log('Error Reading File with List of Lab Tests');
-      res.sendStatus(500);
-    } else {
-      res.json(JSON.parse(data));
-    }
-  })
-})
-
-router.get('/conditions', function (req, res) {
-  fs.readFile('resources/list_conditions.json', function (err, data) {
-    if (err) {
-      console.log('Error Reading File with List of Conditions', err);
-      res.sendStatus(500);
-    } else {
-      res.json(JSON.parse(data));
-    }
-  })
-})
-
 router.get('/info', function (req, res) {
   if (req.query.s) {
     mw.getInfoTerm(req.query.s)
@@ -76,5 +36,13 @@ router.get('/info', function (req, res) {
       })
   }
 })
+
+router.use('/symptoms', symptoms);
+
+router.use('/riskfactors', riskfactors)
+
+router.use('/labtests', labtests)
+
+router.use('/conditions', conditions)
 
 module.exports = router;
