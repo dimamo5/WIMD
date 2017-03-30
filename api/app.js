@@ -11,8 +11,9 @@ var app = express()
 app.use(logger('dev'));
 app.use(bodyParser.json());
 
+app.use('/auth',auth);
+//app.use(auth.jwtverify) //Middleware to verify jwt token
 app.use('/', index);
-app.use('/auth',auth)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
