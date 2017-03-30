@@ -32,10 +32,16 @@ function register(username,password,mail){
     const auth = dbConn.collection('auth');
     const users = dbConn.collection('users');
 
-    return users.insertOne({name:"Diogo",birthdate:new Date("1995-08-05"),gender:"M"})
+    return users.insertOne({name:"Diogo",birthdate:new Date("1995-08-05"),gender:"M",symptoms:[],conditions:[],riskFactors:[],labTests:[]})
     .then((user)=>{
         return auth.insertOne({"_id":ObjectID(user.insertedId),username:username,password:hashPass,mail:mail,verified:false})
     })
+}
+
+function getUser(id){
+    const users = dbConn.collection('users');
+
+    return users.findOne(ObjectId(id));
 }
 
 module.exports.login=login;
