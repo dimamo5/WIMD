@@ -44,5 +44,20 @@ function getUser(id){
     return users.findOne(ObjectId(id));
 }
 
+function insertMedicalInfo(type,userId,medicalId){
+    const users = dbConn.collection('users');
+    
+    return users.update(
+        {_id:id},
+        { $addToSet: {type :[{
+            id: medicalId,
+            date: new Date()
+        }]}}
+    )
+
+}
+
+
+
 module.exports.login=login;
 module.exports.register=register;
