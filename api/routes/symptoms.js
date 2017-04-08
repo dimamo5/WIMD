@@ -38,7 +38,7 @@ router.post('/', function (req, res) {
 
 })
 
-router.delete('/',function(req,res){
+router.delete('/', function (req, res) {
   if (!req.body.symptomId || !req.body.symptomDate) {
     res.status(400).json({
       message: 'Symptom Id or date missing'
@@ -46,7 +46,7 @@ router.delete('/',function(req,res){
     return;
   }
 
-db.removeSymptomsInfo("58d803878cc7d319f0b3db47", req.body.symptomId,req.body.symptomDate)
+  db.removeSymptomsInfo("58d803878cc7d319f0b3db47", req.body.symptomId, req.body.symptomDate)
     .then(() => {
       res.sendStatus(200);
     })
@@ -56,6 +56,20 @@ db.removeSymptomsInfo("58d803878cc7d319f0b3db47", req.body.symptomId,req.body.sy
         message: err
       })
     })
+})
+
+router.get('/', function (req, res) {
+
+  db.getSymptomsInfo(req.user)
+  .then((symptoms => {
+    res.json({
+      symptoms:symptoms
+    })
+  }))
+  .catch(()=>{
+    res.sendStatus(500);
+  })
+
 })
 
 

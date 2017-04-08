@@ -60,6 +60,18 @@ function getUser(id) {
     return users.findOne(ObjectId(id));
 }
 
+function getSymptomsInfo(userId) {
+    const users = dbConn.collection('users');
+
+    return users.find({
+        _id: ObjectID(userId)
+    }, {
+        symptoms: 1
+    }).then((user) => {
+        return user.symptoms;
+    })
+}
+
 function insertSymptomsInfo(userId, medicalId) {
     const users = dbConn.collection('users');
 
@@ -73,10 +85,9 @@ function insertSymptomsInfo(userId, medicalId) {
             }
         }
     })
-
 }
 
-function removeSymptomsInfo(userId, symptomId,symptomDate) {
+function removeSymptomsInfo(userId, symptomId, symptomDate) {
     const users = dbConn.collection('users');
 
     return users.update({
@@ -84,15 +95,20 @@ function removeSymptomsInfo(userId, symptomId,symptomDate) {
     }, {
         $pull: {
             symptoms: {
-                id: symptomId,
-                date: new Date(symptomDate)
+                $and: [{
+                        id: symptomId
+                    },
+                    {
+                        date: new Date(symptomDate)
+                    }
+                ]
             }
         }
     })
-
 }
 
 module.exports.login = login;
 module.exports.register = register;
 module.exports.insertSymptomsInfo = insertSymptomsInfo;
 module.exports.removeSymptomsInfo = removeSymptomsInfo;
+module.exports.getSymptomsInfo = getSymptomsInfo;
