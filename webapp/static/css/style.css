@@ -12,6 +12,10 @@
     margin-top: 30px;
 }
 
+p{
+    color: #1C1C83;
+}
+
 .form-control{
     border-style: solid;
     border-color: #BF0000;
@@ -34,7 +38,7 @@
     color: #1C1C83;
 }
 
-#btn-login{
+#btn-login, #btn-Register{
     margin-top: 25px;
     border-radius: 0px;    
     background-color:#BF0000;

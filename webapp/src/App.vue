@@ -11,13 +11,16 @@
 <script>
 
 import Login from './components/Login'
+import Register from './components/Register'
+
 export default {
   name: 'app',
   data:function(){
     return {auth:this.$root.auth}
   },
   components: {
-    Login
+    Login,
+    Register
   },
   methods:{
     loggedIn:function(){

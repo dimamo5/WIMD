@@ -11,7 +11,17 @@
            <div id="inputLoginForm">
           <div class="row">
                 <div class="col-md-3 col-md-offset-4">
+                <input type="text" id="inputName" class="form-control" placeholder="Name" v-model="Name" required autofocus>
+                </div>          
+          </div>
+          <div class="row">
+                <div class="col-md-3 col-md-offset-4">
                 <input type="text" id="inputUsername" class="form-control" placeholder="Username" v-model="Username" required autofocus>
+                </div>          
+          </div>
+          <div class="row">
+                <div class="col-md-3 col-md-offset-4">
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email" v-model="Email" required autofocus>
                 </div>          
           </div>
           <div class="row">
@@ -20,13 +30,8 @@
                 </div>
           </div>
           <div class="row">
-                <div class="col-md-3 col-md-offset-4 text-right">
-                <p>Not Registered yet? click <a href="/register">here</a>.</p>
-                </div>
-          </div>
-          <div class="row">
                 <div class="col-md-3 col-md-offset-4">
-                <button id="btn-login" class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+                <button id="btn-Register" class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
                 </div>
           </div>
           </div>
@@ -38,9 +43,9 @@
 
 <script>
 export default {
-  name: 'Login',
+  name: 'Register',
   data () {
-    return {failed:false,Username:'',Password:''}     //todo
+    return {failed:false,Name:'', Username:'',Password:'', Email: ''}     //todo
   },
   methods:{
       requestLogin:function(){
