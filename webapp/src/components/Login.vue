@@ -1,7 +1,7 @@
 <template>
     <div class="container">
 
-      <form v-on:submit.prevent="requestLogin" class="form-signin">
+      <form v-on:submit.prevent="login" class="form-login">
       <div class="container">
           <div id="header" class="row"> 
             <h1 class="col-md-1 col-md-offset-3">WIMD</h1>
