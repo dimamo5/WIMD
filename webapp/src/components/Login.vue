@@ -43,7 +43,7 @@ export default {
     return {failed:false,Username:'',Password:''}     //todo
   },
   methods:{
-      requestLogin:function(){
+      login:function(){
                 this.$root.auth=true;
       }
   }
