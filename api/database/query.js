@@ -66,7 +66,7 @@ function getSymptomsInfo(userId) {
     return users.findOne({
         _id: ObjectID(userId)
     }, {fields:{
-        symptoms: 1
+        symptoms: {$slice:10}
     }
     }).then((user) => {
         return user.symptoms;
