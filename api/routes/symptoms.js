@@ -50,21 +50,14 @@ router.delete('/', function (req, res) {
 router.get('/', function (req, res) {
 
   db.getSymptomsInfo(req.user.id)
-  .then((symptoms => {
+  .then((symptoms) => {
     res.json(symptoms
     )
-  }))
+  })
   .catch((err)=>{
     res.sendStatus(500);
   })
 })
-
-
-
-
-
-
-
 
 
 
