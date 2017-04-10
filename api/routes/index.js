@@ -37,6 +37,17 @@ router.get('/info', function (req, res) {
   }
 })
 
+router.get('/info/symptoms', function (req, res) {
+  fs.readFile('resources/list_symptoms.json', function (err, data) {
+    if (err) {
+      console.log('Error Reading File with List of Symptoms');
+      res.sendStatus(500);
+    } else {
+      res.json(JSON.parse(data));
+    }
+  })
+});
+
 router.use('/symptoms', symptoms);
 
 router.use('/riskfactors', riskfactors)

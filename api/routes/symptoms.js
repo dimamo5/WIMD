@@ -6,17 +6,6 @@ const fs = require('fs');
 const db = require('../database/query');
 
 
-router.get('/', function (req, res) {
-  fs.readFile('resources/list_symptoms.json', function (err, data) {
-    if (err) {
-      console.log('Error Reading File with List of Symptoms');
-      res.sendStatus(500);
-    } else {
-      res.json(JSON.parse(data));
-    }
-  })
-});
-
 router.post('/', function (req, res) {
   if (!req.body.symptomId) {
     res.status(400).json({
@@ -46,7 +35,7 @@ router.delete('/', function (req, res) {
     return;
   }
 
-  db.removeSymptomsInfo("58d803878cc7d319f0b3db47", req.body.symptomId, req.body.symptomDate)
+  db.removeSymptomsInfo(req.user.id, req.body.symptomId, req.body.symptomDate)
     .then(() => {
       res.sendStatus(200);
     })
@@ -60,16 +49,14 @@ router.delete('/', function (req, res) {
 
 router.get('/', function (req, res) {
 
-  db.getSymptomsInfo(req.user)
+  db.getSymptomsInfo(req.user.id)
   .then((symptoms => {
-    res.json({
-      symptoms:symptoms
-    })
+    res.json(symptoms
+    )
   }))
-  .catch(()=>{
+  .catch((err)=>{
     res.sendStatus(500);
   })
-
 })
 
 

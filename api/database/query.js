@@ -63,10 +63,11 @@ function getUser(id) {
 function getSymptomsInfo(userId) {
     const users = dbConn.collection('users');
 
-    return users.find({
+    return users.findOne({
         _id: ObjectID(userId)
-    }, {
+    }, {fields:{
         symptoms: 1
+    }
     }).then((user) => {
         return user.symptoms;
     })
