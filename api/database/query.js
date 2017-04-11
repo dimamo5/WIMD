@@ -200,6 +200,7 @@ function removeRiskFactorInfo(userId, riskfactorId) {
     })
 }
 
+
 //LabTest
 function getLabTestInfo(userId) {
     const users = dbConn.collection('users');
@@ -222,7 +223,7 @@ function insertLabTestInfo(userId, medicalId) {
         _id: ObjectID(userId)
     }, {
         $push: {
-            conditions: {
+            labtests: {
                 id: medicalId,
                 date: new Date()
             }

@@ -3,6 +3,8 @@ const infermedica = require('../request/infermedica');
 const mw = require('../request/merrian_webster');
 const router = express.Router();
 const fs = require('fs');
+const db = require('../database/query');
+
 
 
 router.post('/', function (req, res) {
@@ -55,18 +57,6 @@ router.get('/', function (req, res) {
             res.sendStatus(500);
         })
 })
-
-
-
-module.exports = router;
-
-
-
-
-
-
-
-
 
 
 
