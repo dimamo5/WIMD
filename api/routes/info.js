@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const infermedica = require('../request/infermedica');
 const mw = require('../request/merrian_webster');
+const parser = require('../merriam-webster/parser');
 
 router.get('/refresh', function (req, res) {
   Promise.all([infermedica.getConditions(), infermedica.getLabTests(), infermedica.getRiskFactors(), infermedica.getSymptoms()])
@@ -13,11 +14,14 @@ router.get('/refresh', function (req, res) {
     })
 })
 
+"request /api/info/term?s=disease"
 router.get('/term', function (req, res) {
   if (req.query.s) {
     mw.getInfoTerm(req.query.s)
       .then((data) => {
-        //call function to parse the XML and output only the necessary thing
+
+          parser.parse(data);  //tratar a informação ver postman
+
         res.json(data);
       })
       .catch((err) => {
