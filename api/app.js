@@ -11,6 +11,12 @@ var app = express()
 app.use(logger('dev'));
 app.use(bodyParser.json());
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.use('/auth',auth);
 //TODO uncomment this
 //app.use(auth.jwtverify) //Middleware to verify jwt token
