@@ -20,7 +20,14 @@ router.get('/term', function (req, res) {
         mw.getInfoTerm(req.query.s)
             .then((data) => {
                 let result = parser.parse(data);
-                res.json(result);  //TODO do lado do cliente verificar se res == null (nao foram encontrados resultados)
+
+                if (result === null) {
+                    res.status(200).json({
+                        message: "no results found"
+                    });
+                }
+                else
+                    res.status(200).json(result);
             })
             .catch((err) => {
                 console.log('Error geting the medical information');
