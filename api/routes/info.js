@@ -14,7 +14,7 @@ router.get('/refresh', function (req, res) {
         })
 })
 
-"request /api/info/term?s=disease"
+//"request /api/info/term?s=disease"
 router.get('/term', function (req, res) {
     if (req.query.s) {
         mw.getInfoTerm(req.query.s)
