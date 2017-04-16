@@ -2,8 +2,6 @@
   <div id="app">
     <navbar v-if="auth !== undefined" v-on:loggedOut="loggedOut"></navbar>
     <router-view v-if="auth !== undefined"></router-view>
-    {{auth}}
-
     <login v-on:loggedIn="loggedIn" v-if="!register && auth === undefined"></login>
   </div>
 </template>
@@ -30,7 +28,7 @@
         this.auth = this.$root.auth;
       },
       loggedOut: function () {
-        this.auth = '';
+        this.auth = undefined;
       }
     }
   }

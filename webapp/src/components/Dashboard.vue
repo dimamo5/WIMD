@@ -8,7 +8,10 @@
         <nav class="menuCircle">
           <ul class='circle'>
             <li class='raspberry light slice'>
-              <label for='oraspberry' class='circle' v-on:click="alerta">Sintomas</label>
+              <label for='oraspberry' class='circle' v-on:click="alerta">
+                <i class="fa fa-plus pull-right clicable change-color" data-toggle="modal" data-target="#create-modal"
+						aria-hidden="true"></i>
+                Sintomas</label>
             </li>
             <li class='unsel circle'><label for='unsel'></label></li>
           </ul>
@@ -19,14 +22,25 @@
 </template>
 
 <script>
+  import SymptumsModal from './modal/Symptoms.vue'
   export default {
     name: 'Register',
     data() {
-      return { failed: false, Name: '', Username: '', Password: '', Email: '' }
+      return { symptoms: [] }
+    },
+    components: { SymptumsModal },
+    mounted: function () {
+      this.$http.get('http://localhost:3000/api/info/refresh')
+        .then(() => {
+          this.$http.get('http://localhost:3000/api/info/symptoms')
+            .then((response) => {
+              this.symptoms = response;
+              alert(response);
+            })
+        })
     },
     methods: {
       alerta: function () {
-              alert(this.$root.auth);
       }
     }
   }

@@ -56,7 +56,6 @@
           })
       },
       register: function () {
-        alert(this.$root.register);
         this.$root.register = true;
       }
     }

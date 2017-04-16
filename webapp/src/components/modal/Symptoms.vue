@@ -1,5 +1,4 @@
 <template>
-
     <div class="modal fade" id="create-modal" tabindex="-1" role="dialog" aria-labelledby="CreateSymptomModal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -10,12 +9,12 @@
                 <form v-on:submit.prevent="createSymptom">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="descricao">Descrição do sintoma</label>
-                            <input type="text" class="form-control" id="descricao" v-model="" placeholder="Descrição">
+                            <label>Descrição do sintoma</label>
+                            <input type="text" class="form-control" id="descricao" v-model="" placeholder="">
                         </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Confirmar</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Confirmar</button>
                     </div>
                 </form>
             </div>
@@ -24,19 +23,13 @@
 </template>
 
 <script>
-
-  export default {
-    name: 'CreateSymptomModal',
-    data () {
-      return {oportunidade:{descricao:''}
-    },
-    mounted: function(){
-    },
-    methods:{
-      createSymptom: function(e){
-
+    export default {
+        name: 'CreateSymptomModal',
+        data() {
+            return {
+                oportunidade: { descricao: '' }
+            }
         }
-      }
     }
-  }
+
 </script>
