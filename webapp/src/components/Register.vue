@@ -50,8 +50,8 @@ export default {
            this.$http.post('http://localhost:3000/auth/register',{username:this.Username,password:this.Password, mail: this.Email})
           .then((response)=>{
               if(response.body. message === 'Success'){  
-                  this.$root.auth=response.body.token;        
-                  this.$emit('loggedIn');
+                  this.$root.key=response.body.token;        
+                  this.$router.push('/');
               }else{
                 alert('Username/Password não estão correctas!');
               }

@@ -10,7 +10,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Descrição do sintoma</label>
-                            <input type="text" class="form-control" id="descricao" v-model="" placeholder="">
+                            <input type="text" class="form-control" id="descricao" placeholder="">
                         </div>
                     </div>
                     <div class="modal-footer">

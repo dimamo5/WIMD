@@ -7,13 +7,19 @@ import VueResource from 'vue-resource'
 
 import Register from './components/Register.vue'
 import Dashboard from './components/Dashboard.vue'
+import Login from './components/Login.vue'
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
 
+let auth = {
+  key:null
+}
+
 const routes = [
     { path: '/', component: Dashboard },
-    { path: '/register', component: Register }
+    { path: '/register', component: Register },
+    { path: '/login', component: Login }
 ]
 
 //Add history mode in future
@@ -26,5 +32,6 @@ const router = new VueRouter({
 new Vue({
     router,
     el: '#app',
+    data:auth,
     render: h => h(App)
 })

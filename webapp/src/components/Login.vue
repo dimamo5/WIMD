@@ -22,7 +22,7 @@
           <div class="row">
             <div class="col-md-3 col-md-offset-4 text-right">
               <p>Not Registered yet? click
-                <router-link v-on:click="register" tag="a" to="/register">here</router-link>.</p>
+                <router-link tag="a" to="/register">here</router-link>.</p>
             </div>
           </div>
           <div class="row">
@@ -48,15 +48,12 @@
         this.$http.post('http://localhost:3000/auth/login', { username: this.Username, password: this.Password })
           .then((response) => {
             if (response.body.message === 'Success') {
-              this.$root.auth = response.body.token
-              this.$emit('loggedIn');
+              this.$root.key = response.body.token
+              this.$router.push('/');
             } else {
               alert('Username/Password não estão correctas!')
             }
           })
-      },
-      register: function () {
-        this.$root.register = true;
       }
     }
   }
