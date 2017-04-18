@@ -45,24 +45,29 @@
 </template>
 
 <script>
-      export default {
-            name: 'Register',
-            data() {
-                  return { failed: false, Name: '', Username: '', Password: '', Email: '' }
-            },
-            methods: {
-                  requestRegister: function () {
-                        this.$http.post('http://localhost:3000/auth/register', { username: this.Username, password: this.Password, mail: this.Email })
-                              .then((response) => {
-                                    if (response.body.message === 'Success') {
-                                          this.$root.key = response.body.token;
-                                          this.$router.push('/');
-                                    } else {
-                                          alert('Username/Password não estão correctas!');
-                                    }
-                              })
-                  }
+export default {
+      name: 'Register',
+      data() {
+            return { failed: false, Name: '', Username: '', Password: '', Email: '' }
+      },
+      mounted: function () {
+            if (this.$root.key) {
+                  this.$router.push('/');
+            }
+      },
+      methods: {
+            requestRegister: function () {
+                  this.$http.post('http://localhost:3000/auth/register', { username: this.Username, password: this.Password, mail: this.Email })
+                        .then((response) => {
+                              if (response.body.message === 'Success') {
+                                    this.$root.key = response.body.token;
+                                    this.$router.push('/');
+                              } else {
+                                    alert('Username/Password não estão correctas!');
+                              }
+                        })
             }
       }
+}
 
 </script>
