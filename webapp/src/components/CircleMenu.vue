@@ -8,7 +8,7 @@
                 <li class='raspberry light slice'>
                     <label for='oraspberry' class='circle'>
                         <i class="fa fa-plus pull-right clicable change-color"
-                           aria-hidden="true"></i> Sintomas
+                           aria-hidden="true"></i> Symptoms
                     </label>
                 </li>
                 <li class='unsel circle'>
