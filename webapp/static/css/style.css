@@ -65,7 +65,7 @@ p{
 }
 
 .navbar-header .navbar-brand span {
-	color: #30a5ff;
+	color: #1C1C83;
 }
 
 .nav-tabs {
@@ -100,7 +100,7 @@ p{
 
 .nav-pills li.active a,
 .nav-pills li.active a:hover {
-	background: #30a5ff;
+	background: #1C1C83;
 }
 
 
@@ -119,9 +119,9 @@ p{
 .navbar input:focus {
 	color: #fff;
 	background: #555;
-	border: 1px solid #30a5ff;
+	border: 1px solid #1C1C83;
 	outline: 0;
-	box-shadow: inset 0px 0px 0px 1px #30a5ff;
+	box-shadow: inset 0px 0px 0px 1px #1C1C83;
 }
 
 
@@ -156,7 +156,7 @@ p{
 .sidebar ul.nav .active > a:hover, .sidebar ul.nav li.parent a.active:hover,
 .sidebar ul.nav .active > a:focus, .sidebar ul.nav li.parent a.active:focus {
 	color: #fff;
-	background-color: #30a5ff;
+	background-color: #1C1C83;
 }
 
 .sidebar ul.nav ul,
@@ -175,11 +175,11 @@ p{
 .sidebar ul.nav ul.children li a {
 	height: 40px;
 	background: #f9f9f9;
-	color: #30a5ff!important;
+	color: #1C1C83!important;
 }
 
 .sidebar ul.nav li.current a {
-	background-color: #30a5ff;
+	background-color: #1C1C83;
 	color: #fff!important;
 }
 
@@ -266,7 +266,7 @@ body {
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
   color: #fff;
-  background-color: #428bca;
+  background-color: #1C1C83;
 }
 
 
@@ -305,4 +305,23 @@ body {
 .placeholder img {
   display: inline-block;
   border-radius: 50%;
+}
+
+li#left-bot{
+	transform: rotate(-90deg);
+	background-color: #1C1C83;
+}
+
+li#left-bot label{
+	background-color: #1C1C83;
+}
+li#right-bot{
+	transform: rotate(180deg);
+}
+li#right-top{
+	transform: rotate(90deg);
+	background-color: #1C1C83;
+}
+li#right-top label{
+	background-color: #1C1C83;
 }

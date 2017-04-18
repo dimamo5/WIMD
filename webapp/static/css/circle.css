@@ -46,7 +46,7 @@
     background: paleturquoise;
 }
 .raspberry{
-    background-color:  #ef6982; 
+    background-color:  #BF0000; 
     }
 
 .magnifiable { height: 100%; }
@@ -67,20 +67,20 @@ nav label { cursor: pointer; }
     text-decoration: none;
     font-weight: 900;
     transition: 1s;
-    color: black;
+    color: white;
 }
 
 
 
 .slice label:hover { opacity: 1; }
 .dark label:hover { color: white; }
-.light label:hover { color: black; }
+.light label:hover { color: white; }
 .unsel label {
 	display: block;
 	height: 100%;
 	background: radial-gradient(rgba(0,0,0,.5), transparent 50%);
 }
-.raspberry label, .oraspberry:checked ~ nav .unsel { background: #ef6982; }
+.raspberry label, .oraspberry:checked ~ nav .unsel { background: #BF0000; }
 .slice label:hover:after { opacity: 0; }
 .oraspberry:checked ~ nav .circle .raspberry { transform: scale(1.05); }
 
@@ -91,7 +91,7 @@ nav label { cursor: pointer; }
 .ogrape:checked ~ nav .grape label, 
 .oraspberry:checked ~ nav .raspberry label {
 	/*box-shadow: 0 0 .45em rgba(0,0,0,.5);*/
-	opacity: 1; color: black;
+	opacity: 1; color: white;
 }
 .oblackberry:checked ~ nav .blackberry label , 
 .ocherry:checked ~ nav .cherry label, 
