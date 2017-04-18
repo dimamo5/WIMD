@@ -1,9 +1,11 @@
 <template>
-  <div class="container">
+  <div>
     <Navbar />
-    <div class="row">
-      <div class="col-md-6">
-        <CircleMenu/>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <CircleMenu/>
+        </div>
       </div>
     </div>
   </div>
