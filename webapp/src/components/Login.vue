@@ -45,6 +45,11 @@
     data() {
       return { failed: false, Username: '', Password: '' } // todo
     },
+    mounted: function () {
+            if (this.$root.key) {
+                  this.$router.push('/');
+            }
+      },
     methods: {
       login: function () {
         this.$http.post('http://localhost:3000/auth/login', { username: this.Username, password: this.Password })

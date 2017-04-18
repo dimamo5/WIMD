@@ -37,8 +37,8 @@
         },
         methods: {
             logout: function () {
-                this.$root.auth = '';
-                this.$emit('loggedOut');
+                this.$root.key = null;
+                this.$router.push('login');
             }
         }
     }
