@@ -37,15 +37,14 @@
             }
         },
         mounted: function () {
-            this.$http.get('http://localhost:3000/api/info/symptoms')
+            this.$http.get('http://localhost:3000/api/info/symptoms', {headers: { 'Authorization': this.$root.key}})
                 .then((response) => {
                     this.symptoms = response;
-                    for (var symptom of response.body) {
+                    for (let symptom of response.body) {
                         this.options.push({ value: symptom.id, text: symptom.name });
-                    }
-                    this.$nextTick(() => {
-                        $('.selectpicker').selectpicker('refresh');
-                    })
+                    }}
+                ,(err)=>{
+                    console.log(err)
                 })
 
 
@@ -64,11 +63,13 @@
                 this.items = _.unionWith(this.items, [this.options[0]], _.isEqual)
             },
             submitSymptoms: function () {
-                console.log(this.$root.key);
-                for (var symptom of this.items) {
-                    this.$http.post('http://localhost:3000/api/symptoms', {body:{symptomId: symptom.value}}, {header: { Authorization: this.$root.key}})
+                for (let symptom of this.items) {
+                    this.$http.post('http://localhost:3000/api/symptoms', {symptomId: symptom.value}, {headers: { Authorization: this.$root.key}})
                     .then((response) => {
-                        alert('submited with success')
+                        alert('submited with success');
+                    })
+                    .catch((err)=>{
+                        alert(err);
                     })
                 }
 

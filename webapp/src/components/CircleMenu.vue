@@ -50,7 +50,7 @@
             </ul>
         </nav>
     
-        <create-modal></create-modal>
+        <create-modal />
     </div>
 </template>
 

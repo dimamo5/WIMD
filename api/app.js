@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var cors = require('cors')
 
 var index = require('./routes/index');
 var auth = require('./routes/auth');
@@ -11,15 +12,18 @@ var app = express()
 app.use(logger('dev'));
 app.use(bodyParser.json());
 
-app.use(function(req, res, next) {
+app.use(cors());
+app.options('*', cors())
+
+/*app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,Authorization, Accept");
   next();
-});
+});*/
 
 app.use('/auth',auth);
 //TODO uncomment this
-//app.use(auth.jwtverify) //Middleware to verify jwt token
+app.use(auth.jwtverify) //Middleware to verify jwt token
 app.use('/api', index);
 
 // catch 404 and forward to error handler

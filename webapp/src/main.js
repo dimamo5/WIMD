@@ -13,7 +13,7 @@ Vue.use(VueRouter);
 Vue.use(VueResource);
 
 let auth = {
-  key:null
+  key:undefined
 }
 
 const routes = [

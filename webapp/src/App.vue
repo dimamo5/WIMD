@@ -23,7 +23,7 @@
       Navbar,
       Dashboard,
     },
-    mounted: function(){
+    beforeMount: function(){
       if(!this.$root.key){
         this.$router.push('login');
       }

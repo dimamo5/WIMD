@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <CircleMenu/>
+          <CircleMenu />
         </div>
       </div>
     </div>
@@ -26,11 +26,6 @@
       if (!this.$root.key) {
         this.$router.push('/login');
       }
-
-      this.$http.get('http://localhost:3000/api/info/symptoms')
-        .then((response) => {
-          this.symptoms = response;
-        })
     }
   }
 
