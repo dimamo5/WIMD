@@ -30,14 +30,18 @@
 	width: 50%; height: 50%;
 	transform-origin: 100% 100%;
 	
-    border-style: solid;
-    border-width: 5px;	
+   /* border-style: solid;
+    border-width: 5px;	*/
 }
 .unsel {
-    top: 25%;
+   /* top: 25%;
     left: 25%;
     width: 50%;
-    height: 50%;
+    height: 50%;*/
+    top: 38%;
+    left: 38%;
+    width: 25%;
+    height: 25%;
     box-shadow: 0 0 0.75em;
     background: paleturquoise;
 }
@@ -49,7 +53,7 @@
 nav label { cursor: pointer; }
 .slice label {
     display: block;
-    margin: 15%;
+    margin: 30%;
     width: 100%;
     height: 100%;
     transform: rotate(-45deg);
@@ -61,9 +65,12 @@ nav label { cursor: pointer; }
     line-height: 1.9;
     text-align: center;
     text-decoration: none;
+    font-weight: 900;
     transition: 1s;
     color: black;
 }
+
+
 
 .slice label:hover { opacity: 1; }
 .dark label:hover { color: white; }
@@ -92,5 +99,5 @@ nav label { cursor: pointer; }
 	box-shadow: 0 0 .45em rgba(0,0,0,.5);
 	opacity: 1; color: white;
 }
-@media (min-width: 25em) { .slice label { font-size: 1em; line-height: 2.3; } }
+@media (min-width: 25em) { .slice label { font-size: 1.5em; line-height: 2.3; } }
 @media (min-width: 35em) { .slice label { font-weight: 700; line-height: 2.7; } }

@@ -17,21 +17,18 @@
   export default {
     name: 'Dashboard',
     data() {
-      return { symptoms: [] }
+      return {}
     },
-    components: { SymptumsModal,CircleMenu,Navbar },
+    components: { CircleMenu, Navbar },
     mounted: function () {
-      if(!this.$root.key){
+      if (!this.$root.key) {
         this.$router.push('/login');
       }
-      /*this.$http.get('http://localhost:3000/api/info/refresh')
-        .then(() => {
-          this.$http.get('http://localhost:3000/api/info/symptoms')
-            .then((response) => {
-              this.symptoms = response;
-              alert(response);
-            })
-        })*/
+
+      this.$http.get('http://localhost:3000/api/info/symptoms')
+        .then((response) => {
+          this.symptoms = response;
+        })
     }
   }
 
