@@ -12,6 +12,21 @@
                             <label>Select a group of symptoms from the list of symptoms: </label>
                             <multi-select :options="options" :selected-options="items" placeholder="select item" @select="onSelect">
                             </multi-select>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Identificador</th>
+                                        <th>Symptom name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="option in randomOptions" :value="option" v-on:click="showSymtom(option)" class="clicable">
+									<td>{{ option.value }}</td>
+									<td>{{ option.text }}</td>
+								    </tr>
+
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -33,17 +48,23 @@
                 symptoms: [], selected: '', options: [], selected: false,
                 searchText: '', // If value is falsy, reset searchText & searchItem
                 items: [],
-                lastSelectItem: {}
+                lastSelectItem: {},
+                randomOptions: []
             }
         },
         mounted: function () {
-            this.$http.get('http://localhost:3000/api/info/symptoms', {headers: { 'Authorization': this.$root.key}})
+            this.$http.get('http://localhost:3000/api/info/symptoms', { headers: { 'Authorization': this.$root.key } })
                 .then((response) => {
                     this.symptoms = response;
                     for (let symptom of response.body) {
                         this.options.push({ value: symptom.id, text: symptom.name });
-                    }}
-                ,(err)=>{
+                    }
+                    for (let option = 0; option < 10; option++) {
+                        let index = Math.floor(Math.random() * (this.options.length - 1) + 1);
+                        this.randomOptions.push({ value: this.options[index].value, text: this.options[index].text });
+                    }
+                }
+                , (err) => {
                     console.log(err)
                 })
 
@@ -53,6 +74,10 @@
             onSelect(items, lastSelectItem) {
                 this.items = items
                 this.lastSelectItem = lastSelectItem
+            },
+            showSymtom(item) {
+                this.items.push(item);
+                console.log(this.items);
             },
             // deselect option
             reset() {
@@ -64,13 +89,13 @@
             },
             submitSymptoms: function () {
                 for (let symptom of this.items) {
-                    this.$http.post('http://localhost:3000/api/symptoms', {symptomId: symptom.value}, {headers: { Authorization: this.$root.key}})
-                    .then((response) => {
-                        alert('submited with success');
-                    })
-                    .catch((err)=>{
-                        alert(err);
-                    })
+                    this.$http.post('http://localhost:3000/api/symptoms', { symptomId: symptom.value }, { headers: { Authorization: this.$root.key } })
+                        .then((response) => {
+                            alert('submited with success');
+                        })
+                        .catch((err) => {
+                            alert(err);
+                        })
                 }
 
             }

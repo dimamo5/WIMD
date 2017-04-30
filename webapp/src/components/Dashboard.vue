@@ -1,10 +1,12 @@
 <template>
   <div>
     <Navbar />
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-md-6">
-          <CircleMenu />
+        <div class="col-sm-12 col-md-12 main">
+          <div class="row placeholders">
+            <panel-menu></panel-menu>
+          </div>
         </div>
       </div>
     </div>
@@ -13,7 +15,7 @@
 
 <script>
   import SymptumsModal from './modal/Symptoms.vue'
-  import CircleMenu from './CircleMenu.vue'
+  import PanelMenu from './PanelMenu.vue'
   import Navbar from './Navbar.vue'
 
   export default {
@@ -21,12 +23,22 @@
     data() {
       return {}
     },
-    components: { CircleMenu, Navbar },
+    components: { PanelMenu, Navbar },
     mounted: function () {
       if (!this.$root.key) {
         this.$router.push('/login');
       }
+
+      this.$http.get('http://localhost:3000/api/symptoms', this.$root.key)
+        .then((response) => {
+          if (response.body.message === 'Success') {
+           alert('yay')
+          } else {
+            alert('Username/Password não estão correctas!')
+          }
+        })
     }
   }
 
 </script>
+

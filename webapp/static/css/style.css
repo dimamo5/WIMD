@@ -1,5 +1,5 @@
 #login-container {
-	
+
   position: absolute;
   top: 35%;
   transform: translateY(-35%);
@@ -11,7 +11,7 @@
 }
 
 #header div.image {
-   content:url('../img/logo.png');
+   content:url('../img/logo2.png');
    margin-left: 15px;
    margin-top: 15px;
 }
@@ -49,15 +49,26 @@ p{
 
 #btn-login, #btn-Register{
     margin-top: 25px;
-    border-radius: 0px;    
+    border-radius: 0px;
     background-color:#BF0000;
     border-color: #BF0000;
 
 }
 
+#navHeader{
+  background-color: #1C1C83;
+  color: #fff;
+
+  -webkit-box-shadow: 0px 5px 18px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 5px 18px -1px rgba(0,0,0,0.75);
+  box-shadow: 0px 5px 18px -1px rgba(0,0,0,0.75);
+}
 
 .navbar-header .navbar-brand {
 	color: #fff;
+/*
+  background-color: #f1f4f7;
+  color: black;*/
 	font-size: 16px;
 	text-transform: uppercase;
 	font-weight: 500;
@@ -137,7 +148,7 @@ p{
 		margin: 0;
 		padding: 0;
 		overflow-x: hidden;
-		overflow-y: auto; 
+		overflow-y: auto;
 		background-color: #fff;
 		box-shadow: 1px 0px 10px rgba(0, 0, 0, .05);
 	}
@@ -146,7 +157,7 @@ p{
 	}
 }
 
-.sidebar ul.nav a:hover, 
+.sidebar ul.nav a:hover,
 .sidebar ul.nav li.parent ul li a:hover {
 	text-decoration: none;
 	background-color: #e9ecf2;
