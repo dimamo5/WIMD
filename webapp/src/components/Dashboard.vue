@@ -28,15 +28,6 @@
       if (!this.$root.key) {
         this.$router.push('/login');
       }
-
-      this.$http.get('http://localhost:3000/api/symptoms', this.$root.key)
-        .then((response) => {
-          if (response.body.message === 'Success') {
-           alert('yay')
-          } else {
-            alert('Username/Password não estão correctas!')
-          }
-        })
     }
   }
 
