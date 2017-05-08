@@ -28,7 +28,6 @@ router.post('/', function (req, res) {
 });
 
 router.delete('/', function (req, res) {
-
     if (!req.user.id || !req.body.riskFactorId) {
         res.status(400).json({
             message: 'Query param missing'

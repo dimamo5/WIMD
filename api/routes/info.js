@@ -20,7 +20,6 @@ router.get('/term', function (req, res) {
         mw.getInfoTerm(req.query.s)
             .then((data) => {
                 let result = parser.parse(data);
-
                 if (result === null) {
                     res.status(200).json({
                         message: "no results found"
