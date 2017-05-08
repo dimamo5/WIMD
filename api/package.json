@@ -3,9 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "prestart": "start mongod",
     "start": "node ./bin/www",
-    "poststart": "start mongo admin --eval \"db.shutdownServer()\"",
     "test": "mocha --reporter spec --bail --check-leaks test/",
     "testRoutes": "mocha --reporter spec --bail --check-leaks test/routes",
     "testAPI": "mocha --reporter spec --bail --check-leaks test/api_requests"
