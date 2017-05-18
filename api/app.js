@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
 
 app.use('/auth',auth);
 //TODO uncomment this
-//app.use(auth.jwtverify) //Middleware to verify jwt token
+app.use(auth.jwtverify) //Middleware to verify jwt token
 app.use('/api', index);
 
 // catch 404 and forward to error handler

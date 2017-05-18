@@ -6,6 +6,8 @@ const crypto = require('crypto');
 const url = 'mongodb://localhost:27017/WIMD';
 let dbConn = {};
 
+const LIMIT_ARRAY = 10;
+
 // Use connect method to connect to the server
 MongoClient.connect(url, function (err, db) {
     if (err) {
@@ -23,7 +25,7 @@ function login(username, password) {
     const collection = dbConn.collection('auth');
 
     return collection.findOne({
-        username: username,
+        mail: mail,
         password: hashPass
     })
 }
@@ -35,9 +37,11 @@ function register(username, password, mail) {
     const users = dbConn.collection('users');
 
     return users.insertOne({
-            name: "Diogo",
-            birthdate: new Date("1995-08-05"),
-            gender: "M",
+            name: "",
+            birthdate: null,
+            gender: "",
+            hasRegister: false,
+            diagnostics: [],
             symptoms: [],
             conditions: [],
             riskFactors: [],
@@ -45,20 +49,24 @@ function register(username, password, mail) {
         })
         .then((user) => {
             return auth.insertOne({
-                "_id": ObjectID(user.insertedId),
-                username: username,
+                _id: ObjectID(user.insertedId),
                 password: hashPass,
-                mail: mail,
-                verified: false
+                mail: mail
             })
         })
 }
 
 function getUser(id) {
     const users = dbConn.collection('users');
-
-    return users.findOne(ObjectId(id));
+    return users.findOne({_id: ObjectID(id)},{fields: {symptoms:{$slice:LIMIT_ARRAY},riskFactors:0,conditions:{$slice: LIMIT_ARRAY},lab_tests:{$slice:LIMIT_ARRAY}, diagnostics:{$slice:LIMIT_ARRAY}}})
 }
+
+
+function updateInitInfo(userId,name,gender,birthdate,riskfactors){
+    const users = dbConn.collection('users');
+
+    return users.updateOne({_id: ObjectID(userId)}, {name:name, birthdate:new Date(birthdate), gender:gender, riskFactors: riskFactors, hasRegister:true});
+};
 
 //Symptoms
 function getSymptomsInfo(userId) {
@@ -69,7 +77,7 @@ function getSymptomsInfo(userId) {
     }, {
         fields: {
             symptoms: {
-                $slice: 10
+                $slice: LIMIT_ARRAY
             }
         }
     }).then((user) => {
@@ -259,6 +267,7 @@ module.exports.getSymptomsInfo = getSymptomsInfo;*/
 module.exports = {
     login,
     register,
+    updateInitInfo,
     insertSymptomsInfo,
     removeSymptomsInfo,
     getSymptomsInfo,
