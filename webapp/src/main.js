@@ -2,16 +2,36 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import router from './router'
-
 import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
 
-Vue.config.productionTip = false
+import Register from './components/Register.vue'
+import Dashboard from './components/Dashboard.vue'
+import Login from './components/Login.vue'
 
-/* eslint-disable no-new */
+Vue.use(VueRouter);
+Vue.use(VueResource);
+
+let auth = {
+  key:undefined
+}
+
+const routes = [
+    { path: '/', component: Dashboard },
+    { path: '/register', component: Register },
+    { path: '/login', component: Login }
+]
+
+//Add history mode in future
+const router = new VueRouter({
+    linkActiveClass: 'active',
+    routes
+})
+
+
 new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: { App }
+    router,
+    el: '#app',
+    data:auth,
+    render: h => h(App)
 })

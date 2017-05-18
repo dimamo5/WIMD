@@ -1,35 +1,33 @@
 <template>
   <div id="app">
-    <navbar v-if="auth" v-on:loggedOut="loggedOut"></navbar>
-    <sidebar v-if="auth" ></sidebar>
-    <router-view v-if="auth"></router-view>
+    <!--<navbar v-if="auth !== undefined" v-on:loggedOut="loggedOut"></navbar>-->
 
-    <login v-on:loggedIn="loggedIn" v-if="!auth"></login>
+    <router-view></router-view>
+
+    <!--<Login v-on:loggedIn="loggedIn" v-if="!register && auth === undefined"></Login>-->
+
   </div>
 </template>
 
 <script>
+  import Navbar from './components/Navbar'
+  import Dashboard from './components/Dashboard'
+  import router from 'vue-router'
 
-import Login from './components/Login'
-import Register from './components/Register'
-
-export default {
-  name: 'app',
-  data:function(){
-    return {auth:this.$root.auth}
-  },
-  components: {
-    Login,
-    Register
-  },
-  methods:{
-    loggedIn:function(){
-      this.auth=true;
+  export default {
+    name: 'app',
+    data: function () {
+      return {}
     },
-    loggedOut:function(){
-      this.auth=false;
+    components: {
+      Navbar,
+      Dashboard,
+    },
+    beforeMount: function(){
+      if(!this.$root.key){
+        this.$router.push('login');
+      }
     }
   }
-}
-</script>
 
+</script>

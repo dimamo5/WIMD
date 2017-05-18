@@ -3,6 +3,7 @@ const router = express.Router();
 const infermedica = require('../request/infermedica');
 const mw = require('../request/merrian_webster');
 const parser = require('../merriam-webster/parser');
+const fs = require('fs');
 
 router.get('/refresh', function (req, res) {
     Promise.all([infermedica.getConditions(), infermedica.getLabTests(), infermedica.getRiskFactors(), infermedica.getSymptoms()])

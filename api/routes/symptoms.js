@@ -48,7 +48,7 @@ router.delete('/', function (req, res) {
 })
 
 router.get('/', function (req, res) {
-
+  console.log(req.user);
   db.getSymptomsInfo(req.user.id)
   .then((symptoms) => {
     res.json(symptoms
