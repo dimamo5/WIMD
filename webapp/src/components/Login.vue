@@ -11,12 +11,12 @@
         <div id="inputLoginForm">
           <div class="row">
             <div class="col-md-3 col-md-offset-4">
-              <input type="text" id="inputUsername" class="form-control" placeholder="Username" v-model="Username" required autofocus>
+              <input type="text" id="input_mail" class="form-control" placeholder="Mail" v-model="mail" required autofocus>
             </div>
           </div>
           <div class="row">
             <div class="col-md-3 col-md-offset-4">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" v-model="Password" required>
+                <input type="password" id="input_password" class="form-control" placeholder="Password" v-model="password" required>
               </div>
             </div>
           </div>
@@ -43,7 +43,7 @@
   export default {
     name: 'Login',
     data() {
-      return { failed: false, Username: '', Password: '' } // todo
+      return { failed: false, mail: '', password: '' } // todo
     },
     mounted: function () {
             if (this.$root.key) {
@@ -52,7 +52,7 @@
       },
     methods: {
       login: function () {
-        this.$http.post('http://localhost:3000/auth/login', { username: this.Username, password: this.Password })
+        this.$http.post('http://localhost:3000/auth/login', { mail: this.mail, password: this.password })
           .then((response) => {
             if (response.body.message === 'Success') {
               this.$root.key = response.body.token
