@@ -58,7 +58,7 @@
               this.$root.key = response.body.token
               this.$router.push('/');
             } else {
-              alert('Username/Password não estão correctas!')
+              alert('Mail/Password não estão correctas!')
             }
           })
       }

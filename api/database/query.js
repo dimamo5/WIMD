@@ -19,7 +19,7 @@ MongoClient.connect(url, function (err, db) {
 
 });
 
-function login(username, password) {
+function login(mail, password) {
     var hashPass = crypto.createHash('sha256').update(password).digest('hex');
 
     const collection = dbConn.collection('auth');
@@ -30,7 +30,7 @@ function login(username, password) {
     })
 }
 
-function register(username, password, mail) {
+function register(password, mail) {
     var hashPass = crypto.createHash('sha256').update(password).digest('hex');
 
     const auth = dbConn.collection('auth');
@@ -38,7 +38,7 @@ function register(username, password, mail) {
 
     return users.insertOne({
             name: "",
-            birthdate: null,
+            age: null,
             gender: "",
             hasRegister: false,
             diagnostics: [],
@@ -62,10 +62,10 @@ function getUser(id) {
 }
 
 
-function updateInitInfo(userId,name,gender,birthdate,riskfactors){
+function updateInitInfo(userId,name,gender,age,riskfactors){
     const users = dbConn.collection('users');
 
-    return users.updateOne({_id: ObjectID(userId)}, {name:name, birthdate:new Date(birthdate), gender:gender, riskFactors: riskFactors, hasRegister:true});
+    return users.updateOne({_id: ObjectID(userId)}, {name:name, age:age, gender:gender, riskFactors: riskFactors, hasRegister:true});
 };
 
 //Symptoms

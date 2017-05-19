@@ -7,7 +7,7 @@ const SECRET = 'lapd';
 router.post('/login', function (req, res) {
     if (!req.body.mail || !req.body.password) {
         res.status(400).json({
-            message: 'Missing username or password'
+            message: 'Missing mail or password'
         });
         return;
     }
@@ -15,7 +15,7 @@ router.post('/login', function (req, res) {
         .then((user) => {
             if (!user) {
                 res.status(403).json({
-                    message: 'Invalid username or password'
+                    message: 'Invalid mail or password'
                 });
                 return;
             }

@@ -8,27 +8,23 @@
                               <div class="col-md-1 image"></div>​
                               <h1 class="col-md-4">Your Health Advisor</h1>
                         </div>
-                        <div id="inputLoginForm">
                               <div class="row">
                                     <div class="col-md-3 col-md-offset-4">
-                                          <input type="text" id="inputName" class="form-control" placeholder="Name" v-model="Name" required autofocus>
+                                          <input type="email" id="inputEmail" class="form-control" placeholder="Email" v-model="email" required autofocus>
                                     </div>
                               </div>
                               <div class="row">
                                     <div class="col-md-3 col-md-offset-4">
-                                          <input type="text" id="inputUsername" class="form-control" placeholder="Username" v-model="Username" required autofocus>
+                                          <input type="password" id="inputPassword" class="form-control" placeholder="Password" v-model="password" required>
                                     </div>
                               </div>
                               <div class="row">
                                     <div class="col-md-3 col-md-offset-4">
-                                          <input type="email" id="inputEmail" class="form-control" placeholder="Email" v-model="Email" required autofocus>
+                                          <input type="password" id="inputPasswordRepeat" class="form-control" placeholder="Repeat Password" v-model="passwordConfirmed" required>
                                     </div>
                               </div>
-                              <div class="row">
-                                    <div class="col-md-3 col-md-offset-4">
-                                          <input type="password" id="inputPassword" class="form-control" placeholder="Password" v-model="Password" required>
-                                    </div>
-                              </div>
+
+
                               <div class="row">
                                     <div class="col-md-3 col-md-offset-4">
                                           <div class="col-md-8 col-md-offset-2">
@@ -48,7 +44,7 @@
 export default {
       name: 'Register',
       data() {
-            return { failed: false, Name: '', Username: '', Password: '', Email: '' }
+            return { failed: false, name: '', password: '', email: '',passwordConfirmed:'' }
       },
       mounted: function () {
             if (this.$root.key) {
@@ -57,13 +53,13 @@ export default {
       },
       methods: {
             requestRegister: function () {
-                  this.$http.post('http://localhost:3000/auth/register', { username: this.Username, password: this.Password, mail: this.Email })
+                  this.$http.post('http://localhost:3000/auth/register', {password: this.Password, mail: this.Email })
                         .then((response) => {
                               if (response.body.message === 'Success') {
                                     this.$root.key = response.body.token;
                                     this.$router.push('/');
                               } else {
-                                    alert('Username/Password não estão correctas!');
+                                    alert('Mail/Password não estão correctas!');
                               }
                         })
             }

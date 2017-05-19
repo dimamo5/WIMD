@@ -23,7 +23,7 @@ router.get('/', function (req, res) {
 });
 
 router.post('/',function(req,res){
-  if(!req.body.sex || !req.body.name || !req.birthday || !req.body.riskFactors){
+  if(!req.body.sex || !req.body.name || !req.age || !req.body.riskFactors){
     return;
   }
 
