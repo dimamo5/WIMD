@@ -12,14 +12,16 @@
                     <input id="choice_45_74_present"
                            name="choice_45_74"
                            type="radio"
-                           v-model="choice_45_74">
+                           value="present"
+                           v-model="other.choice_45_74">
                     <label class="radio-label"
                            for="choice_45_74_present">Yes
                     </label>
                     <input id="choice_45_74_absent"
                            name="choice_45_74"
-                           v-model="choice_45_74"
-                           type="radio">
+                           v-model="other.choice_45_74"
+                           type="radio"
+                           value="absent">
                     <label class="radio-label"
                            for="choice_45_74_absent">No
                     </label>
@@ -34,13 +36,15 @@
                     <input id="choice_45_69_present"
                            name="choice_45_69"
                            type="radio"
-                           v-model="choice_45_69">
+                           v-model="other.choice_45_69"
+                           value="present">
                     <label class="radio-label"
                            for="choice_45_69_present">Yes
                     </label>
                     <input id="choice_45_69_absent"
                            name="choice_45_69"
-                           v-model="choice_45_69"
+                           v-model="other.choice_45_69"
+                           value="absent"
                            type="radio">
                     <label class="radio-label"
                            for="choice_45_69_absent">No
@@ -56,13 +60,15 @@
                     <input id="choice_45_70_present"
                            name="choice_45_70"
                            type="radio"
-                           v-model="choice_45_70">
+                           v-model="other.choice_45_70"
+                           value="present">
                     <label class="radio-label"
                            for="choice_45_70_present">Yes
                     </label>
                     <input id="choice_45_70_absent"
                            name="choice_45_70"
-                           v-model="choice_45_70"
+                           v-model="other.choice_45_70"
+                           value="absent"
                            type="radio">
                     <label class="radio-label"
                            for="choice_45_70_absent">No
@@ -77,13 +83,15 @@
                     <input id="choice_45_71_present"
                            name="choice_45_71"
                            type="radio"
-                           v-model="choice_45_71">
+                           v-model="other.choice_45_71"
+                           value="present">
                     <label class="radio-label"
                            for="choice_45_71_present">Yes
                     </label>
                     <input id="choice_45_71_absent"
                            name="choice_45_71"
-                           v-model="choice_45_71"
+                           v-model="other.choice_45_71"
+                           value="absent"
                            type="radio">
                     <label class="radio-label"
                            for="choice_45_71_absent">No
@@ -98,13 +106,15 @@
                     <input id="choice_45_72_present"
                            name="choice_45_72"
                            type="radio"
-                           v-model="choice_45_72">
+                           v-model="other.choice_45_72"
+                           value="present">
                     <label class="radio-label"
                            for="choice_45_72_present">Yes
                     </label>
                     <input id="choice_45_72_absent"
                            name="choice_45_72"
-                           v-model="choice_45_72"
+                           v-model="other.choice_45_72"
+                           value="absent"
                            type="radio">
                     <label class="radio-label"
                            for="choice_45_72_absent">No
@@ -118,11 +128,11 @@
 <script>
 export default {
     name: 'RiskFactorsForm',
+    props:['other'],
     data() {
-        return { choice_45_69: '', choice_45_70: '', choice_45_71: '', choice_45_72: '', choice_45_74: '' }
+        return {}
     },
     mounted: function () {
-
     },
     methods: {
     }

@@ -53,7 +53,8 @@ export default {
 
     let userPromise = this.$http.get('http://localhost:3000/api/', { headers: { Authorization: this.$root.key } })
       .then((response) => {
-        this.$root.data.user = response;
+        this.$root.data.user = response.body;
+        console.log(this.$root.data.user)
         if(!this.$root.data.user.hasRegister){
           this.$router.push('/info');
         }

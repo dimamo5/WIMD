@@ -23,12 +23,13 @@ router.get('/', function (req, res) {
 });
 
 router.post('/',function(req,res){
-  if(!req.body.sex || !req.body.name || !req.age || !req.body.riskFactors){
-    return;
+  if(!req.body.sex || !req.body.name || !req.body.age || !req.body.riskFactors){
+    res.sendStatus(400);
   }
 
-  db.updateInitInfo(req.user.id,req.body.name,req.body.sex,req.body.riskFactors)
-  .then(() =>{
+  db.updateInitInfo(req.user.id,req.body.name,req.body.sex,req.body.age,req.body.riskFactors)
+  .then((response) =>{
+    console.log(response);
     res.sendStatus(200);
   })
   .catch((err)=>{

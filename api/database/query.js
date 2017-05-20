@@ -65,7 +65,9 @@ function getUser(id) {
 function updateInitInfo(userId,name,gender,age,riskfactors){
     const users = dbConn.collection('users');
 
-    return users.updateOne({_id: ObjectID(userId)}, {name:name, age:age, gender:gender, riskFactors: riskFactors, hasRegister:true});
+    console.log(name,gender,age,riskfactors);
+
+    return users.updateOne({_id: ObjectID(userId)}, {'name':name, 'age':age, 'gender':gender, 'riskFactors': riskfactors, 'hasRegister':true});
 };
 
 //Symptoms

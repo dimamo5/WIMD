@@ -966,6 +966,7 @@
 import * as Regions from '../assets/countries_region.json'
 export default {
     name: 'InfoRegister',
+    props:['riskfactors'],
     data() {
         return { regionsSelected: [] }
     },
@@ -975,46 +976,55 @@ export default {
     methods: {
         regionSelect: function ($event) {
             let region = this.findRegion($event.target.id);
-            region.forEach(function (code) {
+
+            region['region'].forEach(function (code) {
                 let element = document.getElementById(code);
                 if (element.classList.length == 0) {
                     element.classList += "selected"
                 } else {
                     element.classList = ""
                 }
+
+                if(!this.riskfactors.includes(region['code'])){
+                    this.riskfactors.push(region['code']);
+                }else{
+                    this.riskfactors.slice(this.riskfactors.indexOf(region['code'],1));
+                }
+                    
+
             }, this);
 
         },
         findRegion: function (code) {
             if (Regions["europe"].includes(code)) {
-                return Regions["europe"];
+                return {region:Regions["europe"],code:"p_15"};
             }
             if (Regions["north_africa"].includes(code)) {
-                return Regions["north_africa"];
+                return {region:Regions["north_africa"],code:"p_16"};
             }
             if (Regions["south_africa"].includes(code)) {
-                return Regions["south_africa"];
+                return {region:Regions["south_africa"],code:"p_18"};
             }
             if (Regions["central_africa"].includes(code)) {
-                return Regions["central_africa"];
+                return {region:Regions["central_africa"],code:"p_17"};
             }
             if (Regions["north_america"].includes(code)) {
-                return Regions["north_america"];
+                return {region:Regions["north_america"],code:"p_13"};
             }
             if (Regions["south_america"].includes(code)) {
-                return Regions["south_america"];
+                return {region:Regions["south_america"],code:"p_14"};
             }
             if (Regions["asia"].includes(code)) {
-                return Regions["asia"];
+                return {region:Regions["asia"],code:"p_22"};
             }
             if (Regions["oceania"].includes(code)) {
-                return Regions["oceania"];
+                return {region:Regions["oceania"],code:"p_19"};
             }
             if (Regions["middle_east"].includes(code)) {
-                return Regions["middle_east"];
+                return {region:Regions["middle_east"],code:"p_21"};
             }
             if (Regions["russia"].includes(code)) {
-                return Regions["russia"];
+                return {region:Regions["russia"],code:"p_20"};
             }
 
         }

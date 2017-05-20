@@ -52,13 +52,13 @@
                                     <h3>Please select the region you live in and places you've traveled to in the last 12 months.</h3>
                               </div>
                               <div class="col-md-12">
-                                    <MapSelect />
+                                    <MapSelect :riskfactors.sync="riskfactors" />
                               </div>
                         </div>
                   </div>
-
-                  <RiskFactorsForm v-if="step==3" />
-
+      
+                  <RiskFactorsForm v-if="step==3" :other.sync="other"/>
+      
             </div>
       
             <div class="form-footer">
@@ -78,26 +78,58 @@ import * as RiskFactorsForm from './RiskFactorsForm.vue'
 
 export default {
       name: 'InfoRegister',
-      components: { MapSelect,RiskFactorsForm },
+      components: { MapSelect, RiskFactorsForm },
       data() {
-            return { step: 1, name: '', sex: '', age: 18, riskfactors: [] }
+            return { step: 1, name: '', sex: '', age: 18, riskfactors: [], other: { choice_45_69: '', choice_45_70: '', choice_45_71: '', choice_45_72: '', choice_45_74: '' } }
       },
       mounted: function () {
 
       },
       methods: {
             nextStep: function () {
-                  if (this.step <= 3) {
+                  if (this.step < 3) {
                         this.step++;
                         return;
                   }
+                  this.calcRiskFactors();
 
-                  let labtestsPromise = this.$http.post('http://localhost:3000/api/', { name, sex, age }, { headers: { Authorization: this.$root.key } })
+                  this.formatRiskFactors();
+
+                  let user = {name:this.name, sex:this.sex, age:this.age, riskFactors:this.riskfactors};
+                  
+                  this.$http.post('http://localhost:3000/api/', user, { headers: { Authorization: this.$root.key } })
                         .then((response) => {
-                              this.$root.data.user = response;
                               this.$router.push('/');
                         })
 
+            },
+            calcRiskFactors: function () {
+                  if (this.age < 18) {
+                        this.riskfactors.push("p_65");
+                  } else if (this.age > 40 && this.age < 55) {
+                        this.riskfactors.push("p_4");
+                  } else if (this.age > 60) {
+                        this.riskfactors.push("p_5");
+                  }
+
+            },
+            formatRiskFactors: function(){
+                  if(this.other.choice_45_74=="present"){
+                       this.riskfactors.push("p_7"); 
+                  }
+                  if(this.other.choice_45_69=="present"){
+                       this.riskfactors.push("p_28"); 
+                  }
+                  if(this.other.choice_45_70=="present"){
+                       this.riskfactors.push("p_10"); 
+                  }
+                  if(this.other.choice_45_71=="present"){
+                       this.riskfactors.push("p_9"); 
+                  }
+                  if(this.other.choice_45_72=="present"){
+                       this.riskfactors.push("p_8"); 
+                  }
+                  
             }
       }
 }
