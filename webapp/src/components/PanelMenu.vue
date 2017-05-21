@@ -6,7 +6,7 @@
         <div class="panel-body">
           <ul class="todo-list">
             <li class="todo-list-item">
-              <div class="checkbox" v-for="diagnostico in diagnosticos">
+              <div class="checkbox">
                 <label for="checkbox">diagnostico</label>
               </div>
             </li>
@@ -15,18 +15,7 @@
       </div>
     </div>
     <div class="col-md-4">
-      <div class="panel panel-red">
-        <div class="panel-heading dark-overlay">Symptoms</div>
-        <div class="panel-body">
-          <ul class="todo-list">
-            <li class="todo-list-item">
-                <div class="checkbox" v-for="sintoma in sintomas">
-                  <label for="checkbox">sintoma</label>
-                </div>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <PanelSymptom />
     </div>
     <div class="col-md-4">
       <div class="row">
@@ -42,18 +31,16 @@
 <script>
 import * as PanelLabTest from './Panel/PanelLabTest.vue'
 import * as PanelCondition from './Panel/PanelCondition.vue'
+import * as PanelSymptom from './Panel/PanelSymptom.vue'
+
 
   export default {
     name: 'PanelMenu',
-    components:{PanelLabTest,PanelCondition},
+    components:{PanelLabTest,PanelCondition,PanelSymptom},
     data() {
-      return { sintomas : [], diagnosticos: []}
+      return {}
     },
     mounted: function () {
-      this.$http.get('http://localhost:3000/api/symptoms', {headers: { 'Authorization': this.$root.key }})
-        .then((response) => {
-          this.sintomas = response.body;
-        })
     }
   }
 

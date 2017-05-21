@@ -13,6 +13,8 @@
       </div>
     </div>
     <CreateLabTests v-if="!loading" />
+    <CreateConditions v-if="!loading" />
+    <CreateSymptoms v-if="!loading" />
   </div>
 </template>
 
@@ -20,13 +22,16 @@
 import PanelMenu from './PanelMenu.vue'
 import Navbar from './Navbar.vue'
 import CreateLabTests from './modal/LabTests.vue'
+import CreateConditions from './modal/Conditions.vue'
+import CreateSymptoms from './modal/Symptoms.vue'
+
 
 export default {
   name: 'Dashboard',
   data() {
     return { loading: true }
   },
-  components: { PanelMenu, Navbar,CreateLabTests },
+  components: { PanelMenu, Navbar,CreateLabTests,CreateConditions,CreateSymptoms},
   mounted: function () {
     if (!this.$root.key) {
       this.$router.push('/login');

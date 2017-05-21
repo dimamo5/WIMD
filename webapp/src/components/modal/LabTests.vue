@@ -55,7 +55,6 @@ export default {
     },
     components: { vSelect },
     mounted: function () {
-        console.log(this.$root.data.labtests)
     },
     methods: {
         submitLabTests: function () {

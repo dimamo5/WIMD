@@ -1,9 +1,9 @@
 <template>
   <div class="panel panel-red">
-    <div class="panel-heading dark-overlay">Conditions <i class="pull-right fa fa-plus options-header clicable"
+    <div class="panel-heading dark-overlay">Symptoms <i class="pull-right fa fa-plus options-header clicable"
          aria-hidden="true"
          data-toggle="modal"
-         data-target="#create-condition"></i></div>
+         data-target="#create-symptom"></i></div>
     <div class="panel-body">
       <ul class="todo-list">
         <li class="todo-list-item"
@@ -29,7 +29,7 @@
 import _ from 'lodash'
 
 export default {
-  name: 'PanelCondition',
+  name: 'PanelSymptom',
   data() {
     return { conditions: [] }
   },
