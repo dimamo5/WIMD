@@ -99,6 +99,7 @@ export default {
                   
                   this.$http.post('http://localhost:3000/api/', user, { headers: { Authorization: this.$root.key } })
                         .then((response) => {
+                              this.$root.data.user=user;
                               this.$router.push('/');
                         })
 

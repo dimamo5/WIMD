@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-md-4">
-      <div class="panel panel-blue">
+      <div class="panel panel-red">
         <div class="panel-heading dark-overlay">Diagnosis</div>
         <div class="panel-body">
           <ul class="todo-list">
@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="col-md-4">
-      <div class="panel panel-blue">
+      <div class="panel panel-red">
         <div class="panel-heading dark-overlay">Symptoms</div>
         <div class="panel-body">
           <ul class="todo-list">
@@ -30,43 +30,22 @@
     </div>
     <div class="col-md-4">
       <div class="row">
-        <div class="panel panel-blue">
-          <div class="panel-heading dark-overlay">Conditions</div>
-          <div class="panel-body">
-            <ul class="todo-list">
-              <li class="todo-list-item">
-                <div class="checkbox">
-                  <input type="checkbox" id="checkbox" />
-                  <label for="checkbox">Update Basecamp</label>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <PanelCondition />
       </div>
       <div class="row">
-        <div class="panel panel-blue">
-          <div class="panel-heading dark-overlay">Analysis</div>
-          <div class="panel-body">
-            <ul class="todo-list">
-              <li class="todo-list-item">
-                <div class="checkbox">
-                  <input type="checkbox" id="checkbox" />
-                  <label for="checkbox">Update Basecamp</label>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <PanelLabTest />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import * as PanelLabTest from './Panel/PanelLabTest.vue'
+import * as PanelCondition from './Panel/PanelCondition.vue'
 
   export default {
     name: 'PanelMenu',
+    components:{PanelLabTest,PanelCondition},
     data() {
       return { sintomas : [], diagnosticos: []}
     },

@@ -226,7 +226,7 @@ function getLabTestInfo(userId) {
     })
 }
 
-function insertLabTestInfo(userId, medicalId) {
+function insertLabTestInfo(userId, medicalId,value) {
     const users = dbConn.collection('users');
 
     return users.update({
@@ -235,6 +235,7 @@ function insertLabTestInfo(userId, medicalId) {
         $push: {
             labtests: {
                 id: medicalId,
+                value: value,
                 date: new Date()
             }
         }

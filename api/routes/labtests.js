@@ -8,14 +8,14 @@ const db = require('../database/query');
 //insert
 router.post('/', function (req, res) {
 
-    if(!req.user.id || !req.body.medicalId){
+    if(!req.user.id || !req.body.medicalId || !req.body.value){
         res.status(400).json({
             message: 'Query param missing'
         });
         return;
     }
 
-    db.insertLabTestInfo(req.user.id, req.body.medicalId)
+    db.insertLabTestInfo(req.user.id, req.body.medicalId,req.body.value)
         .then(() => {
             res.sendStatus(200);
         })

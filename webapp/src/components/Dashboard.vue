@@ -12,20 +12,21 @@
         </div>
       </div>
     </div>
+    <CreateLabTests v-if="!loading" />
   </div>
 </template>
 
 <script>
-import SymptumsModal from './modal/Symptoms.vue'
 import PanelMenu from './PanelMenu.vue'
 import Navbar from './Navbar.vue'
+import CreateLabTests from './modal/LabTests.vue'
 
 export default {
   name: 'Dashboard',
   data() {
     return { loading: true }
   },
-  components: { PanelMenu, Navbar },
+  components: { PanelMenu, Navbar,CreateLabTests },
   mounted: function () {
     if (!this.$root.key) {
       this.$router.push('/login');
@@ -33,28 +34,27 @@ export default {
 
     let symptomsPromise = this.$http.get('http://localhost:3000/api/info/symptoms', { headers: { Authorization: this.$root.key } })
       .then((response) => {
-        this.$root.data.symptoms = response;
+        this.$root.data.symptoms = response.body;
       })
 
     let conditionsPromise = this.$http.get('http://localhost:3000/api/info/conditions', { headers: { Authorization: this.$root.key } })
       .then((response) => {
-        this.$root.data.conditions = response;
+        this.$root.data.conditions = response.body;
       })
 
     let riskfactorsPromise = this.$http.get('http://localhost:3000/api/info/riskfactors', { headers: { Authorization: this.$root.key } })
       .then((response) => {
-        this.$root.data.riskfactors = response;
+        this.$root.data.riskfactors = response.body;
       })
 
     let labtestsPromise = this.$http.get('http://localhost:3000/api/info/labtests', { headers: { Authorization: this.$root.key } })
       .then((response) => {
-        this.$root.data.labtests = response;
+        this.$root.data.labtests = response.body;
       })
 
     let userPromise = this.$http.get('http://localhost:3000/api/', { headers: { Authorization: this.$root.key } })
       .then((response) => {
         this.$root.data.user = response.body;
-        console.log(this.$root.data.user)
         if(!this.$root.data.user.hasRegister){
           this.$router.push('/info');
         }
