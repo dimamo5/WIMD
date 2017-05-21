@@ -15,19 +15,39 @@
                     <h4 class="modal-title">Insert Your Existing Symptoms </h4>
                 </div>
                 <div class="modal-body">
-                    <v-select multiple
-                              :value.sync="selected"
-                              label="name"
-                              :options="options"
-                              placeholder="Search Symptoms"></v-select>
-
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="row col-md-12">
+                                <v-select multiple
+                                          :value.sync="selected"
+                                          label="name"
+                                          :options="options"
+                                          placeholder="Search Symptoms"></v-select>
+                            </div>
+                            <div class="row col-md-12">
+                                <Datepicker v-model="date" />
+                            </div>
+                            <div class="row col-md-12"
+                                 v-show="bodyPartSelected">
+                                <h3>Symptoms related to: {{bodyPartSelected}}</h3>
+                                <ul class="list-symptoms">
+                                    <li class="list-symptoms-item clicable"
+                                        v-for="symptom in symptomsBodyPartSelected"
+                                        v-on:click="pickSymptom(symptom)">
+                                        {{symptom.name}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-4">
+                            <SymptomPicker v-on:selectBodyPart="updateSymptoms" />
+                        </div>
+                    </div>
                 </div>
-
-                <SymptomPicker />
-                
                 <div class="modal-footer">
                     <button type="submit"
-                            v-on:click="submitConditions()"
+                            v-on:click="submitSymptoms()"
                             class="btn btn-primary">Submit</button>
                 </div>
             </div>
@@ -37,28 +57,59 @@
 
 <script>
 import vSelect from "vue-select"
+import SymptomPicker from '../SymptomPicker.vue'
+import SymptomsList from '../../assets/symptoms_bodypart.json'
+import Datepicker from 'vuejs-datepicker';
 import _ from 'lodash'
-import SymptomPicker from '../SymptomPicker'
 
 export default {
     name: 'CreateSymptoms',
-    components: {SymptomPicker},
     data() {
         return {
             selected: [],
-            options: this.$root.data.conditions
+            options: this.$root.data.symptoms,
+            symptomsBodyPartSelected: [],
+            bodyPartSelected: '',
+            date: null
         }
     },
-    components: { vSelect },
+    components: { vSelect, SymptomPicker, Datepicker },
     mounted: function () {
     },
     methods: {
-        submitConditions: function () {
-            for (let condition of this.selected) {
-                this.$http.post('http://localhost:3000/api/conditions', { conditionId: condition.id}, { headers: { Authorization: this.$root.key } })
+        submitSymptoms: function () {
+            for (let symptom of this.selected) {
+                this.$http.post('http://localhost:3000/api/symptoms', { symptomId: symptom.id, date: this.date }, { headers: { Authorization: this.$root.key } })
+
             }
+        },
+        updateSymptoms: function (bodyPart) {
+            this.bodyPartSelected = bodyPart;
+            this.symptomsBodyPartSelected = [];
+            SymptomsList[bodyPart].map((element) => {
+                this.symptomsBodyPartSelected.push(_.find(this.$root.data.symptoms, ['id', element]));
+            })
+        },
+        pickSymptom: function (symptom) {
+            if (_.findIndex(this.selected, symptom) == -1)
+                this.selected.push(symptom);
         }
     }
 }
 
 </script>
+
+
+<style>
+.list-symptoms {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 184px;
+    overflow-x: auto;
+}
+
+.list-symptoms-item:hover {
+    background-color: #F3F5F7;
+}
+</style>

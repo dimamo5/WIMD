@@ -45,7 +45,7 @@ export default {
       }
     },
     formatDate: function (date) {
-      return new Date(date).toLocaleString('en-US');
+      return new Date(date).toLocaleDateString('en-US');
     }
   }
 }

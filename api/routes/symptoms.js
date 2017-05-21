@@ -14,7 +14,7 @@ router.post('/', function (req, res) {
     return;
   }
 
-  db.insertSymptomsInfo(req.user.id, req.body.symptomId)
+  db.insertSymptomsInfo(req.user.id, req.body.symptomId,req.body.date)
     .then(() => {
       res.sendStatus(200);
     })

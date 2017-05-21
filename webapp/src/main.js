@@ -9,6 +9,8 @@ import Register from './components/Register.vue'
 import Dashboard from './components/Dashboard.vue'
 import Login from './components/Login.vue'
 import InfoRegister from './components/InfoRegister.vue'
+import Diagnose from './components/Diagnose.vue'
+
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
@@ -23,7 +25,8 @@ const routes = [
     { path: '/', component: Dashboard },
     { path: '/register', component: Register },
     { path: '/login', component: Login },
-    { path: '/info', component: InfoRegister }
+    { path: '/info', component: InfoRegister },
+    { path:'/diagnose',component: Diagnose}
 ]
 
 //Add history mode in future

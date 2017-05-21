@@ -87,8 +87,12 @@ function getSymptomsInfo(userId) {
     })
 }
 
-function insertSymptomsInfo(userId, medicalId) {
+function insertSymptomsInfo(userId, medicalId,symptomDate) {
     const users = dbConn.collection('users');
+
+    if(!symptomDate){
+        symptomDate= Date.now();
+    }
 
     return users.update({
         _id: ObjectID(userId)
@@ -96,8 +100,7 @@ function insertSymptomsInfo(userId, medicalId) {
         $push: {
             symptoms: {
                 id: medicalId,
-                present: true,
-                date: new Date()
+                date: symptomDate
             }
         }
     })

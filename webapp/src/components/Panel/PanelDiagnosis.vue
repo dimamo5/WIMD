@@ -1,18 +1,16 @@
 <template>
   <div class="panel panel-red">
-    <div class="panel-heading dark-overlay">Symptoms <i class="pull-right fa fa-plus options-header clicable"
-         aria-hidden="true"
-         data-toggle="modal"
-         data-target="#create-symptom"></i></div>
+    <div class="panel-heading dark-overlay">Diagnotics <router-link tag="i" to="/diagnose" class="pull-right fa fa-plus options-header clicable"
+         aria-hidden="true"></router-link></div>
     <div class="panel-body">
       <ul class="todo-list">
         <li class="todo-list-item"
-            v-for="symptom in symptoms">
+            v-for="diagnose in diagnosis">
           <div class="date pull-left">
-            {{formatDate(symptom.date)}}
+            {{formatDate(diagnose.date)}}
           </div>
           <div class="symptom-info">
-            <span id="symptom-name">{{symptom.name}}</span>
+            <span id="symptom-name">{{diagnose.result}}</span>
           </div>
           <div class="options pull-right clicable">
             <i class="fa fa-trash-o"
@@ -30,10 +28,10 @@ import _ from 'lodash'
 export default {
   name: 'PanelSymptom',
   data() {
-    return { symptoms: [] }
+    return { diagnosis: [] }
   },
   mounted: function () {
-    this.parseInfo();
+    //this.parseInfo();
   },
   methods: {
     parseInfo: function () {
