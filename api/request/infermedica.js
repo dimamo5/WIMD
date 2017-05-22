@@ -111,18 +111,24 @@ function getSymptoms() {
         })
 }
 
-function diagnotics(userContent){
+function diagnotics(user,evidenceArray) {
+    let content = {
+        sex: user.gender === 'M' ? 'male' : 'female',
+        age: user.age,
+        evidence:evidenceArray
+    };
+    console.log(content);
     return rp({
-            method: 'POST',
-            uri: 'https://api.infermedica.com/v2/diagnosis',
-            headers: {
-                'App-Id': appId,
-                'App-Key': appKey
-            },
-            body:userContent,
-            json: true,
-            simple: true
-        })
+        method: 'POST',
+        uri: 'https://api.infermedica.com/v2/diagnosis',
+        headers: {
+            'App-Id': appId,
+            'App-Key': appKey
+        },
+        body: content,
+        json: true,
+        simple: true
+    })
 }
 
 module.exports = {

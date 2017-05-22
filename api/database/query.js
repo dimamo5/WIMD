@@ -58,16 +58,41 @@ function register(password, mail) {
 
 function getUser(id) {
     const users = dbConn.collection('users');
-    return users.findOne({_id: ObjectID(id)},{fields: {symptoms:{$slice:LIMIT_ARRAY},riskFactors:0,conditions:{$slice: LIMIT_ARRAY},lab_tests:{$slice:LIMIT_ARRAY}, diagnostics:{$slice:LIMIT_ARRAY}}})
+    return users.findOne({
+        _id: ObjectID(id)
+    }, {
+        fields: {
+            symptoms: {
+                $slice: LIMIT_ARRAY
+            },
+            conditions: {
+                $slice: LIMIT_ARRAY
+            },
+            lab_tests: {
+                $slice: LIMIT_ARRAY
+            },
+            diagnostics: {
+                $slice: LIMIT_ARRAY
+            }
+        }
+    })
 }
 
 
-function updateInitInfo(userId,name,gender,age,riskfactors){
+function updateInitInfo(userId, name, gender, age, riskfactors) {
     const users = dbConn.collection('users');
 
-    console.log(name,gender,age,riskfactors);
+    console.log(name, gender, age, riskfactors);
 
-    return users.updateOne({_id: ObjectID(userId)}, {'name':name, 'age':age, 'gender':gender, 'riskFactors': riskfactors, 'hasRegister':true});
+    return users.updateOne({
+        _id: ObjectID(userId)
+    }, {
+        'name': name,
+        'age': age,
+        'gender': gender,
+        'riskFactors': riskfactors,
+        'hasRegister': true
+    });
 };
 
 //Symptoms
@@ -87,11 +112,11 @@ function getSymptomsInfo(userId) {
     })
 }
 
-function insertSymptomsInfo(userId, medicalId,symptomDate) {
+function insertSymptomsInfo(userId, medicalId, symptomDate) {
     const users = dbConn.collection('users');
 
-    if(!symptomDate){
-        symptomDate= Date.now();
+    if (!symptomDate) {
+        symptomDate = Date.now();
     }
 
     return users.update({
@@ -229,7 +254,7 @@ function getLabTestInfo(userId) {
     })
 }
 
-function insertLabTestInfo(userId, medicalId,value) {
+function insertLabTestInfo(userId, medicalId, value) {
     const users = dbConn.collection('users');
 
     return users.update({
@@ -265,11 +290,63 @@ function removeLabTestInfo(userId, labTestId, LabTestDate) {
     })
 }
 
-/*module.exports.login = login;
-module.exports.register = register;
-module.exports.insertSymptomsInfo = insertSymptomsInfo;
-module.exports.removeSymptomsInfo = removeSymptomsInfo;
-module.exports.getSymptomsInfo = getSymptomsInfo;*/
+//Diagnose
+function insertDiagnose(userId, evidence, conditions) {
+    const users = dbConn.collection('users');
+
+    let diagnoseId=new ObjectID();
+
+    return users.update({
+        _id: ObjectID(userId)
+    }, {
+        $push: {
+            diagnosis: {
+                id: new ObjectID(),
+                evidence: evidence,
+                conditions: conditions,
+                date: new Date()
+            }
+        }
+    })
+    .then(()=>{
+        return diagnoseId;
+    })
+}
+
+function getDiagnoseEvidence(userId, diagnoseId) {
+    const users = dbConn.collection('users');
+
+    return users.findOne({
+        _id: ObjectID(userId),
+        'diagnosis.id': ObjectID(diagnoseId)
+    }, {
+        fields: {
+            'diagnosis.$.evidence': 1,
+            age:1,
+            gender:1
+        }
+    })
+}
+
+function updateDiagnose(userId, diagnoseId, conditions, answers) {
+    const users = dbConn.collection('users');
+
+    return users.updateOne({
+        _id: ObjectID(userId),
+        'diagnosis.id': ObjectID(diagnoseId)
+    }, {
+        $push: {
+            'diagnosis.$.evidence': {
+                $each: answers
+            }
+        },
+        $set: {
+            'diagnosis.$.conditions': conditions
+        }
+
+    })
+}
+
 module.exports = {
     login,
     register,
@@ -286,5 +363,8 @@ module.exports = {
     removeRiskFactorInfo,
     getLabTestInfo,
     insertLabTestInfo,
-    removeLabTestInfo
+    removeLabTestInfo,
+    insertDiagnose,
+    updateDiagnose,
+    getDiagnoseEvidence
 }

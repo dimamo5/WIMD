@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const conditions = require('./conditions');
+const diagnose = require('./diagnosis');
 const riskfactors = require('./riskfactors');
 const labtests = require('./labtests');
 const symptoms = require('./symptoms');
@@ -48,5 +49,7 @@ router.use('/riskfactors', riskfactors)
 router.use('/labtests', labtests)
 
 router.use('/conditions', conditions)
+
+router.use('/diagnose', diagnose)
 
 module.exports = router;

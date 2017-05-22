@@ -15,11 +15,14 @@ import Diagnose from './components/Diagnose.vue'
 Vue.use(VueRouter);
 Vue.use(VueResource);
 
+
 let auth = {
   key:undefined
 }
 
+auth.key=localStorage.getItem("userToken");
 let data = {};
+
 
 const routes = [
     { path: '/', component: Dashboard },
