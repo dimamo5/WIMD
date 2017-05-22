@@ -1,0 +1,278 @@
+{
+  "group_single": {
+    "question": {
+      "type": "group_single",
+      "extras": {},
+      "items": [{
+        "choices": [{
+          "label": "Yes",
+          "id": "present"
+        }, {
+          "label": "No",
+          "id": "absent"
+        }, {
+          "label": "Don't know",
+          "id": "unknown"
+        }],
+        "name": "Between 99.5 and 101 \u00b0F (37 and 38 \u00b0C)",
+        "id": "s_99"
+      }, {
+        "choices": [{
+          "label": "Yes",
+          "id": "present"
+        }, {
+          "label": "No",
+          "id": "absent"
+        }, {
+          "label": "Don't know",
+          "id": "unknown"
+        }],
+        "name": "Above 101 \u00b0F (38 \u00b0C)",
+        "id": "s_100"
+      }],
+      "text": "What is your body temperature?"
+    },
+    "conditions": [{
+      "name": "Acute bronchitis",
+      "probability": 0.1096,
+      "id": "c_72"
+    }, {
+      "name": "Sleep apnea, obstructive",
+      "probability": 0.0934,
+      "id": "c_711"
+    }, {
+      "name": "Unstable angina pectoris",
+      "probability": 0.0931,
+      "id": "c_664"
+    }, {
+      "name": "Acute intestinal ischemia",
+      "probability": 0.0713,
+      "id": "c_697"
+    }, {
+      "name": "Influenza",
+      "probability": 0.069,
+      "id": "c_33"
+    }, {
+      "name": "Pulmonary embolism",
+      "probability": 0.0635,
+      "id": "c_136"
+    }, {
+      "name": "Chronic obstructive pulmonary disease",
+      "probability": 0.0612,
+      "id": "c_76"
+    }, {
+      "name": "Left-sided heart failure",
+      "probability": 0.0598,
+      "id": "c_211"
+    }, {
+      "name": "Atrial flutter",
+      "probability": 0.0588,
+      "id": "c_756"
+    }, {
+      "name": "Pyelonephritis",
+      "probability": 0.0508,
+      "id": "c_284"
+    }, {
+      "name": "Atrial fibrillation",
+      "probability": 0.0508,
+      "id": "c_48"
+    }, {
+      "name": "Pulmonary edema",
+      "probability": 0.0503,
+      "id": "c_288"
+    }, {
+      "name": "Asthma",
+      "probability": 0.0498,
+      "id": "c_8"
+    }, {
+      "name": "Myocardial infarction",
+      "probability": 0.0429,
+      "id": "c_140"
+    }, {
+      "name": "Agoraphobia",
+      "probability": 0.0426,
+      "id": "c_366"
+    }, {
+      "name": "Malaria",
+      "probability": 0.0404,
+      "id": "c_413"
+    }, {
+      "name": "Graves' disease",
+      "probability": 0.0385,
+      "id": "c_427"
+    }, {
+      "name": "Goiter",
+      "probability": 0.0316,
+      "id": "c_734"
+    }, {
+      "name": "Acute pancreatitis",
+      "probability": 0.0303,
+      "id": "c_73"
+    }, {
+      "name": "Pneumothorax",
+      "probability": 0.0294,
+      "id": "c_661"
+    }],
+    "id":"567890"
+  },
+  "single": {
+    "question": {
+      "type": "single",
+      "extras": {},
+      "items": [{
+        "choices": [{
+          "label": "Yes",
+          "id": "present"
+        }, {
+          "label": "No",
+          "id": "absent"
+        }, {
+          "label": "Don't know",
+          "id": "unknown"
+        }],
+        "name": "Fever",
+        "id": "s_98"
+      }],
+      "text": "Do you have an elevated body temperature or fever?"
+    },
+    "conditions": [{
+      "name": "Left-sided heart failure",
+      "probability": 0.1506,
+      "id": "c_211"
+    }, {
+      "name": "Chronic obstructive pulmonary disease",
+      "probability": 0.1199,
+      "id": "c_76"
+    }, {
+      "name": "Sleep apnea, obstructive",
+      "probability": 0.0934,
+      "id": "c_711"
+    }, {
+      "name": "Atrial fibrillation",
+      "probability": 0.0681,
+      "id": "c_48"
+    }, {
+      "name": "Dilated cardiomiopathy",
+      "probability": 0.0613,
+      "id": "c_759"
+    }, {
+      "name": "Atrial flutter",
+      "probability": 0.0593,
+      "id": "c_756"
+    }, {
+      "name": "Acute intestinal ischemia",
+      "probability": 0.0423,
+      "id": "c_697"
+    }, {
+      "name": "Influenza",
+      "probability": 0.0361,
+      "id": "c_33"
+    }, {
+      "name": "Pneumonia",
+      "probability": 0.0334,
+      "id": "c_127"
+    }],
+    "id":"123456"
+  },
+  "group_multiple": {
+    "question": {
+      "type": "group_multiple",
+      "extras": {},
+      "items": [{
+        "choices": [{
+          "label": "Yes",
+          "id": "present"
+        }, {
+          "label": "No",
+          "id": "absent"
+        }, {
+          "label": "Don't know",
+          "id": "unknown"
+        }],
+        "name": "Has just started",
+        "id": "s_92"
+      }, {
+        "choices": [{
+          "label": "Yes",
+          "id": "present"
+        }, {
+          "label": "No",
+          "id": "absent"
+        }, {
+          "label": "Don't know",
+          "id": "unknown"
+        }],
+        "name": "A several hours or days",
+        "id": "s_90"
+      }, {
+        "choices": [{
+          "label": "Yes",
+          "id": "present"
+        }, {
+          "label": "No",
+          "id": "absent"
+        }, {
+          "label": "Don't know",
+          "id": "unknown"
+        }],
+        "name": "More than 2 weeks",
+        "id": "s_1625"
+      }],
+      "text": "How long have you had the shortness of breath?"
+    },
+    "conditions": [{
+      "name": "Chronic obstructive pulmonary disease",
+      "probability": 0.1482,
+      "id": "c_76"
+    }, {
+      "name": "Left-sided heart failure",
+      "probability": 0.1448,
+      "id": "c_211"
+    }, {
+      "name": "Sleep apnea, obstructive",
+      "probability": 0.0934,
+      "id": "c_711"
+    }, {
+      "name": "Acute intestinal ischemia",
+      "probability": 0.0713,
+      "id": "c_697"
+    }, {
+      "name": "Influenza",
+      "probability": 0.07,
+      "id": "c_33"
+    }, {
+      "name": "Atrial fibrillation",
+      "probability": 0.0681,
+      "id": "c_48"
+    }, {
+      "name": "Atrial flutter",
+      "probability": 0.0593,
+      "id": "c_756"
+    }, {
+      "name": "Dilated cardiomiopathy",
+      "probability": 0.0588,
+      "id": "c_759"
+    }, {
+      "name": "Pneumonia",
+      "probability": 0.0555,
+      "id": "c_127"
+    }, {
+      "name": "Pyelonephritis",
+      "probability": 0.0508,
+      "id": "c_284"
+    }, {
+      "name": "Malaria",
+      "probability": 0.0404,
+      "id": "c_413"
+    }, {
+      "name": "Graves' disease",
+      "probability": 0.0385,
+      "id": "c_427"
+    }, {
+      "name": "Acute bronchitis",
+      "probability": 0.0337,
+      "id": "c_72"
+    }],
+    "id":"09876"
+  }
+}
