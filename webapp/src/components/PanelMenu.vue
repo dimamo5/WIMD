@@ -4,8 +4,6 @@
       <PanelDiagnosis />
     </div>
     <div class="col-md-4">
-    </div>
-    <div class="col-md-4">
       <PanelSymptom />
     </div>
     <div class="col-md-4">

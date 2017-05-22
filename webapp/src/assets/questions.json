@@ -113,7 +113,7 @@
       "probability": 0.0294,
       "id": "c_661"
     }],
-    "id":"567890"
+    "id": "567890"
   },
   "single": {
     "question": {
@@ -172,7 +172,7 @@
       "probability": 0.0334,
       "id": "c_127"
     }],
-    "id":"123456"
+    "id": "123456"
   },
   "group_multiple": {
     "question": {
@@ -273,6 +273,47 @@
       "probability": 0.0337,
       "id": "c_72"
     }],
-    "id":"09876"
+    "id": "09876"
+  },
+  "report": {
+    "question": null,
+    "conditions": [{
+      "id": "c_20",
+      "name": "Peptic ulcer",
+      "probability": 0.9978
+    }, {
+      "id": "c_215",
+      "name": "Cholecystitis",
+      "probability": 0.9623
+    }, {
+      "id": "c_478",
+      "name": "Hepatitis B",
+      "probability": 0.9599
+    }, {
+      "id": "c_73",
+      "name": "Acute pancreatitis",
+      "probability": 0.76
+    }, {
+      "id": "c_815",
+      "name": "Functional dyspepsia",
+      "probability": 0.646
+    }, {
+      "id": "c_101",
+      "name": "Gastroesophageal reflux disease",
+      "probability": 0.4875
+    }, {
+      "id": "c_98",
+      "name": "Pancreatic cancer",
+      "probability": 0.4512
+    }, {
+      "id": "c_34",
+      "name": "Gilbert's syndrome",
+      "probability": 0.2999
+    }, {
+      "id": "c_426",
+      "name": "Fasciolosis",
+      "probability": 0.2998
+    }],
+    "extras": {}
   }
 }

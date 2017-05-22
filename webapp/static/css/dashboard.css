@@ -159,7 +159,7 @@ body {
 	margin: 0;
 }
 
-.todo-list .lab-test-info, .todo-list .conditions-info { 
+.todo-list .lab-test-info, .todo-list .conditions-info, .todo-list .symptom-info { 
 	display:inline-block; 
 	margin: 0px;
   line-height: 40px;

@@ -41,7 +41,7 @@ export default {
     },
     methods: {
         submitAnswer:function(value){
-            this.$emit('answer',[{id:this.question.items[0].id,value:value}])
+            this.$emit('answer',[{id:this.question.items[0].id,choice_id:value}])
         }
     }
 }

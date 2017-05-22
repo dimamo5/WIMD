@@ -301,7 +301,7 @@ function insertDiagnose(userId, evidence, conditions) {
     }, {
         $push: {
             diagnosis: {
-                id: new ObjectID(),
+                id:diagnoseId,
                 evidence: evidence,
                 conditions: conditions,
                 date: new Date()

@@ -28,12 +28,16 @@ router.post('/:id', function (req, res) {
 
     db.getDiagnoseEvidence(req.user.id, req.params.id)
         .then((user) => {
-            console.log(user)
-            return infermedica.diagnotics(user, user.diagnosis[0].evidence.concat(req.body.answers))
+            return infermedica.diagnotics(user, user.diagnosis[0].evidence.concat(req.body.answers));
         })
         .then((diagnoseRes) => {
-            db.updateDiagnose(req.user.id, req.params.id, diagnoseRes.conditions, req.body.answers)
-            res.json(diagnoseRes)
+            db.updateDiagnose(req.user.id, req.params.id, diagnoseRes.conditions, req.body.answers);
+            console.log(diagnoseRes);
+            res.json(diagnoseRes);
+        })
+        .catch((err)=>{
+            console.log(err);
+            res.status(400).json({message:err})
         })
 })
 

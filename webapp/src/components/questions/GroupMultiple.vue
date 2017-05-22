@@ -57,7 +57,7 @@ export default {
                 if(!quest.value){
                     return;
                 }
-                answers.push({id:quest.id,value:quest.value})
+                answers.push({id:quest.id,choice_id:quest.value})
             }
             this.$emit('answer', answers);
         }

@@ -117,7 +117,7 @@ function diagnotics(user,evidenceArray) {
         age: user.age,
         evidence:evidenceArray
     };
-    console.log(content);
+
     return rp({
         method: 'POST',
         uri: 'https://api.infermedica.com/v2/diagnosis',

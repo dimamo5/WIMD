@@ -33,7 +33,7 @@ export default {
                 return idArray != id;
             })
 
-            this.$emit('answer', [{ id: id, value: "present" }, { id: otherId, value: "absent" }]);
+            this.$emit('answer', [{ id: id, choice_id: "present" }, { id: otherId.id, choice_id: "absent" }]);
         }
     }
 }

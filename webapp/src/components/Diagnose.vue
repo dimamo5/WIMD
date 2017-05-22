@@ -12,6 +12,9 @@
                 <QuestionGroupMultiple v-on:answer="submitAnswer"
                                        v-show="question.type=='group_multiple'"
                                        :question="question" />
+                <DiagnoseReport v-on:answer="submitAnswer"
+                                v-show="question.question=='report'"
+                                :conditions="question.conditions" />
             </div>
     
         </div>
@@ -28,26 +31,36 @@ import QuestionExample from '../assets/questions.json'
 import QuestionSingle from './questions/Single.vue'
 import QuestionGroupSingle from './questions/GroupSingle.vue'
 import QuestionGroupMultiple from './questions/GroupMultiple.vue'
+import DiagnoseReport from './questions/DiagnoseReport.vue'
 
 
 export default {
     name: 'Diagnose',
-    components: { QuestionSingle, QuestionGroupSingle, QuestionGroupMultiple},
+    components: { QuestionSingle, QuestionGroupSingle, QuestionGroupMultiple, DiagnoseReport },
     data() {
-        return { diagnoseId: null, question: {},step: 1  }
+        return { diagnoseId: null, question: {} }
     },
     mounted: function () {
-        /*this.$http.post('http://localhost:3000/api/diagnose', { headers: { Authorization: this.$root.key } })
+        this.$http.post('http://localhost:3000/api/diagnose', {}, { headers: { Authorization: this.$root.auth.key } })
             .then((res) => {
-
-            })*/
-        this.diagnoseId = QuestionExample.single.id;
-        this.question = QuestionExample.single.question;
+                this.diagnoseId = res.body.id;
+                this.question = res.body.question;
+            })
     },
     methods: {
         submitAnswer: function (answers) {
             console.log(answers);
-            this.step++;
+            this.$http.post('http://localhost:3000/api/diagnose/' + this.diagnoseId, { answers }, { headers: { Authorization: this.$root.auth.key } })
+                .then((res) => {
+                    if (res.body.question == null) {
+                        this.question.conditions = res.body.conditions;
+                        this.question.question = "report";
+                    } else {
+                        this.question = res.body.question;
+                    }
+
+                })
+            /*this.step++;
             if (this.step == 1) {
                 this.diagnoseId = QuestionExample.single.id;
                 this.question = QuestionExample.single.question;
@@ -57,7 +70,7 @@ export default {
             } else if (this.step == 3) {
                 this.diagnoseId = QuestionExample.group_multiple.id;
                 this.question = QuestionExample.group_multiple.question;
-            }
+            }*/
             console.log(this.question.type)
         }
     }
