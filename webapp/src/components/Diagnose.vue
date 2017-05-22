@@ -22,8 +22,8 @@
 
 <script>
 
-import * as MapSelect from './MapSelect.vue'
-import * as RiskFactorsForm from './RiskFactorsForm.vue'
+import MapSelect from './MapSelect.vue'
+import RiskFactorsForm from './RiskFactorsForm.vue'
 import QuestionExample from '../assets/questions.json'
 import QuestionSingle from './questions/Single.vue'
 import QuestionGroupSingle from './questions/GroupSingle.vue'
@@ -32,21 +32,33 @@ import QuestionGroupMultiple from './questions/GroupMultiple.vue'
 
 export default {
     name: 'Diagnose',
-    components: { QuestionSingle, QuestionGroupSingle, QuestionGroupMultiple },
+    components: { QuestionSingle, QuestionGroupSingle, QuestionGroupMultiple},
     data() {
-        return { diagnoseId: null, question: {} }
+        return { diagnoseId: null, question: {},step: 1  }
     },
     mounted: function () {
         /*this.$http.post('http://localhost:3000/api/diagnose', { headers: { Authorization: this.$root.key } })
             .then((res) => {
 
             })*/
-        this.diagnoseId = QuestionExample.group_multiple.id;
-        this.question = QuestionExample.group_multiple.question;
+        this.diagnoseId = QuestionExample.single.id;
+        this.question = QuestionExample.single.question;
     },
     methods: {
         submitAnswer: function (answers) {
             console.log(answers);
+            this.step++;
+            if (this.step == 1) {
+                this.diagnoseId = QuestionExample.single.id;
+                this.question = QuestionExample.single.question;
+            } else if (this.step == 2) {
+                this.diagnoseId = QuestionExample.group_single.id;
+                this.question = QuestionExample.group_single.question;
+            } else if (this.step == 3) {
+                this.diagnoseId = QuestionExample.group_multiple.id;
+                this.question = QuestionExample.group_multiple.question;
+            }
+            console.log(this.question.type)
         }
     }
 }

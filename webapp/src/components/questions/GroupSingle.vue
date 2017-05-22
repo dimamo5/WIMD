@@ -29,7 +29,7 @@ export default {
     },
     methods: {
         submitAnswer: function (id) {
-            let otherId = question.find(function (idArray) {
+            let otherId = this.question.items.find(function (idArray) {
                 return idArray != id;
             })
 
