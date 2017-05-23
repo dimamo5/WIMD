@@ -45,22 +45,22 @@ export default {
     let symptomsPromise = this.$http.get('http://localhost:3000/api/info/symptoms', { headers: { Authorization: this.$root.key } })
       .then((response) => {
         this.$root.data.symptoms = response.body;
-      })
+      });
 
     let conditionsPromise = this.$http.get('http://localhost:3000/api/info/conditions', { headers: { Authorization: this.$root.key } })
       .then((response) => {
         this.$root.data.conditions = response.body;
-      })
+      });
 
     let riskfactorsPromise = this.$http.get('http://localhost:3000/api/info/riskfactors', { headers: { Authorization: this.$root.key } })
       .then((response) => {
         this.$root.data.riskfactors = response.body;
-      })
+      });
 
     let labtestsPromise = this.$http.get('http://localhost:3000/api/info/labtests', { headers: { Authorization: this.$root.key } })
       .then((response) => {
         this.$root.data.labtests = response.body;
-      })
+      });
 
     let userPromise = this.$http.get('http://localhost:3000/api/', { headers: { Authorization: this.$root.key } })
       .then((response) => {
@@ -68,7 +68,7 @@ export default {
         if(!this.$root.data.user.hasRegister){
           this.$router.push('/info');
         }
-      })
+      });
 
     Promise.all([symptomsPromise, conditionsPromise, riskfactorsPromise, labtestsPromise, userPromise])
       .then(() => {
@@ -80,4 +80,5 @@ export default {
 }
 
 </script>
+
 
