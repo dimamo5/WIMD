@@ -22,7 +22,7 @@
             </div>
         </div>
     <div class="row col-md-12">
-        <router-link tag="button" to="/" class="btn btn-default pull-right">Exit</router-link>
+        <router-link tag="button" to="/" class="btn btn-default pull-right" exact >Exit</router-link>
     </div>
     </div>
 </template>

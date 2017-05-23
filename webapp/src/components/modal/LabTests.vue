@@ -43,6 +43,8 @@
 <script>
 import vSelect from "vue-select"
 import _ from 'lodash'
+import { EventBus } from '../../BusEvent.js';
+
 export default {
     name: 'CreateLabTests',
     data() {
@@ -60,7 +62,9 @@ export default {
         submitLabTests: function () {
             for(let answer of this.answersSubmmited){
                this.$http.post('http://localhost:3000/api/labtests',{medicalId:answer.id,value:answer.value}, { headers: { Authorization: this.$root.key } })
-            }
+               EventBus.$emit('addLabTest',answer);
+        }
+            $('#create-lab-test').modal('hide');
         },
         updateResults: function (val) {
             this.selected = val;

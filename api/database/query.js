@@ -71,7 +71,7 @@ function getUser(id) {
             lab_tests: {
                 $slice: LIMIT_ARRAY
             },
-            diagnostics: {
+            diagnosis: {
                 $slice: LIMIT_ARRAY
             }
         }

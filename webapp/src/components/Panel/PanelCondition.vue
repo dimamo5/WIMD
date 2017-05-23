@@ -27,6 +27,8 @@
 
 <script>
 import _ from 'lodash'
+import { EventBus } from '../../BusEvent.js';
+
 
 export default {
   name: 'PanelCondition',
@@ -35,6 +37,12 @@ export default {
   },
   mounted: function () {
     this.parseInfo();
+
+    EventBus.$on('addCondition', (cond) => {
+      cond.date = Date.now();
+      this.conditions.push(cond);
+    })
+
   },
   methods: {
     parseInfo: function () {
