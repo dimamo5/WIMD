@@ -1,0 +1,12 @@
+{
+  "central_africa": ["BF", "BI", "BJ", "CD", "CF", "CG", "CI", "CM", "CV", "DJ", "ER", "ET", "GA", "GH", "GM", "GN", "GQ", "GW", "KE", "LR", "ML", "MR", "NE", "NG", "RW", "SD", "SL", "SN", "SO", "SS", "ST", "TD", "TG", "TZ", "UG"],
+  "south_africa": ["AO", "BW", "KM", "LS", "MG", "MU", "MW", "MZ", "NA", "RE", "SC", "SZ", "YT", "ZA", "ZM", "ZW"],
+  "north_africa": ["DZ", "EG", "EH", "IC", "LY", "MA", "TN", "TN"],
+  "south_america": ["AG", "AI", "AR", "AW", "BB", "BM", "BO", "BR", "BS", "BZ", "CL", "CO", "CR", "CU", "CW", "DM", "DO", "EC", "FK", "GD", "GF", "GP", "GT", "GY", "HN", "HT", "JM", "KN", "KY", "LC", "MQ", "MS", "MX", "NI", "PA", "PE", "PR", "PY", "SR", "SV", "SX", "TC", "TT", "UY", "VC", "VE", "VG", "VI"],
+  "north_america": ["CA", "GL", "US"],
+  "asia": ["AF", "AM", "AZ", "BD", "BN", "BT", "CN", "GE", "HK", "ID", "IN", "JP", "KG", "KH", "KP", "KR", "LA", "LK", "MM", "MV", "MY", "NP", "PH", "PK", "SG", "TH", "TJ", "TM", "TW", "UZ", "VN"],
+  "oceania": ["AU", "FJ", "NC", "NR", "NZ", "PG", "PN", "SB", "TL", "VU"],
+  "europe": ["AD", "AL", "AT", "BA", "BE", "BG", "BY", "CH", "CZ", "DE", "DK", "EE", "ES", "FI", "FO", "FR", "GB", "GR", "HR", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MD", "ME", "MK", "MT", "NL", "NO", "PL", "PT", "RO", "RS", "RU - KGD", "SE", "SI", "SK", "UA"],
+  "middle_east": ["AE", "CY", "IL", "IQ", "IR", "JO", "KW", "LB", "OM", "PS", "QA", "SA", "SY", "TR", "YE"],
+  "russia": ["KZ", "MN", "RU"]
+}

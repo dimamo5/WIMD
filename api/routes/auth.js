@@ -5,24 +5,24 @@ const db = require('../database/query');
 const SECRET = 'lapd';
 
 router.post('/login', function (req, res) {
-    if (!req.body.username || !req.body.password) {
+    if (!req.body.mail || !req.body.password) {
         res.status(400).json({
-            message: 'Missing username or password'
+            message: 'Missing mail or password'
         });
         return;
     }
-    db.login(req.body.username, req.body.password)
+    db.login(req.body.mail, req.body.password)
         .then((user) => {
             if (!user) {
                 res.status(403).json({
-                    message: 'Invalid username or password'
+                    message: 'Invalid mail or password'
                 });
                 return;
             }
 
             var token = jwt.sign({
                 id: user._id,
-                username: user.username
+                mail: user.mail
             }, SECRET);
             res.json({
                 message:'Success',
@@ -33,13 +33,13 @@ router.post('/login', function (req, res) {
 });
 
 router.post('/register', function (req, res) {
-    if (!req.body.username || !req.body.password || !req.body.mail) {
+    if (!req.body.mail || !req.body.password) {
         res.status(400).json({
             message: 'Missing parameters'
         });
         return;
     }
-    db.register(req.body.username, req.body.password, req.body.mail)
+    db.register(req.body.mail, req.body.password)
         .then((user) => {
             if (!user) {
                 res.status(500).json({
@@ -50,20 +50,19 @@ router.post('/register', function (req, res) {
 
             var token = jwt.sign({
                 id: user._id,
-                username: user.username
+                mail: user.mail
             }, SECRET);
             res.json({
                 message:'Success',
                 token: token
-            });
-
+            })
         })
 });
 
 function jwtverify(req, res, next) {
 
   // check header or url parameters or post parameters for token
-    var token = req.body.token || req.query.token || req.headers['Authorization'];
+    var token = req.body.token || req.query.token || req.headers['authorization'];
 
   // decode token
   if (token) {

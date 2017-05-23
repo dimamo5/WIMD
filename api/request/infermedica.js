@@ -111,7 +111,30 @@ function getSymptoms() {
         })
 }
 
-module.exports.getConditions = getConditions;
-module.exports.getLabTests = getLabTests;
-module.exports.getRiskFactors = getRiskFactors;
-module.exports.getSymptoms = getSymptoms;
+function diagnotics(user,evidenceArray) {
+    let content = {
+        sex: user.gender === 'M' ? 'male' : 'female',
+        age: user.age,
+        evidence:evidenceArray
+    };
+
+    return rp({
+        method: 'POST',
+        uri: 'https://api.infermedica.com/v2/diagnosis',
+        headers: {
+            'App-Id': appId,
+            'App-Key': appKey
+        },
+        body: content,
+        json: true,
+        simple: true
+    })
+}
+
+module.exports = {
+    getConditions,
+    getLabTests,
+    getRiskFactors,
+    getSymptoms,
+    diagnotics
+}

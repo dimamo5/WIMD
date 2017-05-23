@@ -38,3 +38,8 @@ jspm_packages
 
 #vagrant
 .vagrant
+
+#intellij
+*.idea
+
+*.lock

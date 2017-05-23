@@ -1,0 +1,196 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  background: #f1f4f7;
+  padding-top: 50px;
+  color: #1C1C83;;
+}
+
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+}
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+/*Panels*/
+
+.panel {
+  border: 0;
+}
+
+.panel-heading {
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.025em;
+  height: 66px;
+  line-height: 45px;
+}
+
+.panel-default .panel-heading {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  color: #5f6468;
+}
+
+.panel-footer {
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+
+.panel-footer .input-group {
+  padding: 0px;
+  margin: 0 -5px;
+}
+
+.panel-body{
+  background-color: white;
+  color:black;
+  overflow-y: auto;
+}
+
+.panel-footer .input-group-btn:last-child>.btn,
+.panel-footer .input-group-btn:last-child>.btn-group {
+  margin: 0;
+}
+
+.panel-widget .panel-footer a {
+  color: #999;
+}
+
+.panel-widget .panel-footer a:hover {
+  color: #666;
+  text-decoration: none;
+}
+
+.panel-blue { background:  #BF0000;
+  opacity: 70;}
+.panel-teal { background: #1ebfae; color: #fff; }
+.panel-orange { background: #ffb53e; color: #fff; }
+.panel-red { background: #BF0000; color: #fff; }
+
+.panel-blue .panel-body p,
+.panel-teal .panel-body p,
+.panel-orange .panel-body p,
+.panel-red .panel-body p {
+  color: #1C1C83;
+}
+.panel-blue .panel-body{
+  background-color: #fff;
+}
+
+.panel-blue .panel-heading,
+.panel-teal .panel-heading,
+.panel-orange .panel-heading,
+.panel-red .panel-heading {
+  border-bottom: 1px solid rgba(255, 255, 255, .2);
+  color: #fff;
+}
+
+.panel-blue .text-muted,
+.panel-teal .text-muted,
+.panel-orange .text-muted,
+.panel-red .text-muted {
+  color: rgba(255, 255, 255, .5);
+}
+
+.dark-overlay {
+  background: rgba(0, 0, 0, .05);
+  text-align: center;
+}
+
+.panel-blue { background: #30a5ff; }
+.panel-teal { background: #1ebfae; color: #fff; }
+.panel-orange { background: #ffb53e; color: #fff; }
+.panel-red { background: #f9243f; color: #fff; }
+
+
+/*Todo List Widget*/
+
+.todo-list-item .glyphicon { 
+	margin-right:5px; 
+	color: #9fadbb; 
+}
+
+.todo-list-item .glyphicon:hover { 
+	margin-right:5px; 
+	color: #1b3548; 
+}
+
+.todo-list { 
+	padding: 0;
+	margin: -15px;
+	background: #fff;
+	color: #5f6468;
+}
+
+#checkbox {
+	margin: 0;
+}
+
+.todo-list .lab-test-info, .todo-list .conditions-info, .todo-list .symptom-info { 
+	display:inline-block; 
+	margin: 0px;
+  line-height: 40px;
+}
+.todo-list .date{
+      line-height: 40px;
+}
+.todo-list .options{
+      line-height: 40px;
+}
+
+.todo-list-item {
+	list-style: none;
+	line-height: 0.9;
+	padding: 14px 15px 8px 15px;
+  min-height: 50px;
+}
+
+.todo-list-item:hover, a.todo-list-item:focus {
+	text-decoration: none;
+	background-color: #f6f6f6;
+}
+
+.todo-list-item .trash .glyph:hover {
+	color: #ef4040;
+}
+
+.options-header{
+  line-height: 45px;
+}
+.clicable{
+  cursor:pointer;
+}

@@ -1,23 +1,33 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <!--<navbar v-if="auth !== undefined" v-on:loggedOut="loggedOut"></navbar>-->
+
     <router-view></router-view>
+
+    <!--<Login v-on:loggedIn="loggedIn" v-if="!register && auth === undefined"></Login>-->
+
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
-</script>
+  import Navbar from './components/Navbar'
+  import Dashboard from './components/Dashboard'
+  import router from 'vue-router'
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  export default {
+    name: 'app',
+    data: function () {
+      return {}
+    },
+    components: {
+      Navbar,
+      Dashboard,
+    },
+    beforeMount: function(){
+      if(!this.$root.key){
+        this.$router.push('login');
+      }
+    }
+  }
+
+</script>
