@@ -31,10 +31,13 @@ export default {
     return { loading: true }
   },
   components: { PanelMenu, Navbar,CreateLabTests,CreateConditions,CreateSymptoms},
-  mounted: function () {
+  created: function(){
     if (!this.$root.key) {
       this.$router.push('/login');
     }
+
+  },
+  mounted: function () {
 
     let symptomsPromise = this.$http.get('http://localhost:3000/api/info/symptoms', { headers: { Authorization: this.$root.key } })
       .then((response) => {

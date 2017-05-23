@@ -78,6 +78,7 @@ body {
 .panel-body{
   background-color: white;
   color:black;
+  overflow-y: auto;
 }
 
 .panel-footer .input-group-btn:last-child>.btn,

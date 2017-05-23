@@ -63,7 +63,6 @@ export default {
     return { failed: false, mail: '', password: '' } // todo
   },
   mounted: function () {
-    console.log(this.$root.auth)
     if (this.$root.key) {
       this.$router.push('/');
     }
