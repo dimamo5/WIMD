@@ -10,31 +10,37 @@
         </button>
         <a class="navbar-brand" href="#">WIMD</a>
       </div>
-      <!--<div id="navbar" class="navbar-collapse collapse">
+      <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Settings</a></li>
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Help</a></li>
+      <!-- <li><a href="#">Dashboard</a></li>
+           <li><a href="#">Settings</a></li>
+           <li><a href="#">Help</a></li> -->
+          <li v-on:click="profile()"><a href="">{{this.name}}</a></li>
+          <li v-on:click="logout()"><a href="">Logout</a></li>
         </ul>
-      </div>-->
+      </div>
     </div>
   </nav>
 </template>
 
 <script>
+
+    import Profile from './Profile.vue'
+
     export default {
         name: 'navbar',
         data() {
-            return { name: 'teste' }
+            return { name: this.$root.data.user.name }
         },
         mounted: function () {
-            //TODO ir buscar o nome do utilizador
         },
         methods: {
             logout: function () {
                 this.$root.key = null;
                 this.$router.push('login');
+            },
+            profile: function () {
+                this.$router.push('profile');
             }
         }
     }

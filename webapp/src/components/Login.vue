@@ -1,7 +1,7 @@
 <template>
   <div class="container"
        id="login-container">
-  
+
     <form v-on:submit.prevent="login"
           class="form-login">
       <div class="container">
@@ -52,7 +52,7 @@
         </div>
       </div>
     </form>
-  
+
   </div>
 </template>
 
@@ -75,6 +75,7 @@ export default {
           if (response.body.message === 'Success') {
             this.$root.key = response.body.token
             localStorage.setItem('userToken', response.body.token);
+            this.$root.data.mail = this.mail;
             this.$router.push('/');
           } else {
             alert('Mail/Password não estão correctas!')
