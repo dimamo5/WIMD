@@ -42,3 +42,13 @@
     }
 
 </script>
+
+<style>
+  .navbar-inverse .navbar-nav>li>a{
+    color: #fff;
+  }
+
+  .navbar-inverse .navbar-nav>li>a:hover{
+    color: white;
+  }
+</style>

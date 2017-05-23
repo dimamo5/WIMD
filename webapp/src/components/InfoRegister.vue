@@ -3,7 +3,7 @@
     <div class="form">
       <div class="form-content container-fluid parent"
            v-if="step==1">
-        <div class="first-menu row">
+        <div class="menu row">
           <div class="row menu-element">
             <div class="col-md-6">
               <h3>Insert Name</h3></div>
@@ -172,7 +172,7 @@
     background-color: #BF0000;
   }
 
-  .first-menu {
+  .menu {
     position: absolute;
     top: 50%;
     left: 50%;

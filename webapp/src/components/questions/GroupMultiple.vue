@@ -43,7 +43,7 @@
 
 <script>
 export default {
-    name: 'QuestionGroupSingle',
+    name: 'QuestionGroupMultiple',
     props: ['question'],
     data() {
         return {}

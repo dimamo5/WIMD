@@ -15,25 +15,39 @@
                         </div>
                     </div>
                 </div>
-                <div>
+                <div class="col-md-8">
                     <p>{{result.name}}</p>
                     <p>{{result.severity}}</p>
                 </div>
+                <div class="col-md-2 clicable"
+                     v-on:click="getInfoDisease(result.name)"
+                     data-target="#info-disease"
+                     data-toggle="modal">
+                    <i class="fa fa-info fa-3x"
+                       aria-hidden="true"></i>
+                </div>
             </div>
         </div>
-    <div class="row col-md-12">
-        <router-link tag="button" to="/" class="btn btn-default pull-right" exact >Exit</router-link>
-    </div>
+        <div class="row col-md-12">
+            <router-link tag="button"
+                         to="/"
+                         class="btn btn-default pull-right"
+                         exact>Exit</router-link>
+        </div>
+        <InfoDisease :info="infoDisease" />
     </div>
 </template>
 
 <script>
 import _ from 'lodash'
+import InfoDisease from '../modal/InfoDisease.vue'
+
 export default {
     name: 'DiagnoseReport',
+    components: { InfoDisease },
     props: ['conditions'],
     data() {
-        return { results: [] }
+        return { results: [], infoDisease: {} }
     },
     mounted: function () {
         this.results = _.map(this.conditions, (condition) => {
@@ -58,6 +72,19 @@ export default {
             else if (probability > 0.66) {
                 return 'red';
             }
+        },
+        getInfoDisease: function (disease) {
+            this.$http.get('http://localhost:3000/api/info/term?s=' + disease, { headers: { Authorization: this.$root.key } })
+                .then((response) => {
+                    console.log(response.body);
+                    this.infoDisease = {};
+                    
+                    if(response.body.message){
+                        this.infoDisease.term="No Information! Try Google :)";
+                    }else{
+                        this.infoDisease = response.body;
+                    }
+                })
         }
     }
 }
@@ -74,17 +101,19 @@ export default {
     max-width: 550px;
     text-align: center;
 }
+
 button {
-      height: 40px;
-      color: white;
-      background-color: #BF0000;
+    height: 40px;
+    color: white;
+    background-color: #BF0000;
 }
-.result-condition{
+
+.result-condition {
     padding: 12px 5px 10px 5px;
     border-top: 1px solid #EEEFEE;
 }
-.result-condition .probability{
+
+.result-condition .probability {
     padding-top: 10px;
 }
-
 </style>

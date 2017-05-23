@@ -38,6 +38,7 @@ function register(password, mail) {
 
     return users.insertOne({
             name: "",
+            mail: mail,
             age: null,
             gender: "",
             hasRegister: false,
@@ -45,7 +46,7 @@ function register(password, mail) {
             symptoms: [],
             conditions: [],
             riskFactors: [],
-            labTests: []
+            labtests: []
         })
         .then((user) => {
             return auth.insertOne({
@@ -68,7 +69,7 @@ function getUser(id) {
             conditions: {
                 $slice: LIMIT_ARRAY
             },
-            lab_tests: {
+            labtests: {
                 $slice: LIMIT_ARRAY
             },
             diagnosis: {
@@ -87,11 +88,13 @@ function updateInitInfo(userId, name, gender, age, riskfactors) {
     return users.updateOne({
         _id: ObjectID(userId)
     }, {
-        'name': name,
-        'age': age,
-        'gender': gender,
-        'riskFactors': riskfactors,
-        'hasRegister': true
+        $set: {
+            'name': name,
+            'age': age,
+            'gender': gender,
+            'riskFactors': riskfactors,
+            'hasRegister': true,
+        }
     });
 };
 
@@ -294,23 +297,23 @@ function removeLabTestInfo(userId, labTestId, LabTestDate) {
 function insertDiagnose(userId, evidence, conditions) {
     const users = dbConn.collection('users');
 
-    let diagnoseId=new ObjectID();
+    let diagnoseId = new ObjectID();
 
     return users.update({
-        _id: ObjectID(userId)
-    }, {
-        $push: {
-            diagnosis: {
-                id:diagnoseId,
-                evidence: evidence,
-                conditions: conditions,
-                date: new Date()
+            _id: ObjectID(userId)
+        }, {
+            $push: {
+                diagnosis: {
+                    id: diagnoseId,
+                    evidence: evidence,
+                    conditions: conditions,
+                    date: new Date()
+                }
             }
-        }
-    })
-    .then(()=>{
-        return diagnoseId;
-    })
+        })
+        .then(() => {
+            return diagnoseId;
+        })
 }
 
 function getDiagnoseEvidence(userId, diagnoseId) {
@@ -322,8 +325,8 @@ function getDiagnoseEvidence(userId, diagnoseId) {
     }, {
         fields: {
             'diagnosis.$.evidence': 1,
-            age:1,
-            gender:1
+            age: 1,
+            gender: 1
         }
     })
 }

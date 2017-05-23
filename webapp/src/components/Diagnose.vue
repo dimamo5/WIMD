@@ -40,7 +40,12 @@ export default {
     data() {
         return { diagnoseId: null, question: {}, step: 1 }
     },
+    created: function () {
+        //this.question.question="report";
+        //this.question.conditions= QuestionExample.report.conditions;
+    },
     mounted: function () {
+
         this.$http.post('http://localhost:3000/api/diagnose', {}, { headers: { Authorization: this.$root.key } })
             .then((res) => {
                 this.diagnoseId = res.body.id;
