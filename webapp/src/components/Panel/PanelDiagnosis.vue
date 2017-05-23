@@ -38,14 +38,14 @@ export default {
   },
   mounted: function () {
     this.parseInfo();
+    
   },
   methods: {
     parseInfo: function () {
       for (let diagnose of this.$root.data.user.diagnosis) {
         let diag = _.find(this.$root.data.conditions, ['id', diagnose.conditions[0].id]);
         diag.date = diagnose.date;
-        diag.probability = diagnose.conditions[0].probability;
-        console.log(diag);
+        diag.probability = Math.round(diagnose.conditions[0].probability*100)+ '%';
         this.diagnosis.push(diag);
       }
     },

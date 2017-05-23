@@ -20,7 +20,7 @@
                               label="name"
                               :options="options"
                               placeholder="Search Conditions"></v-select>
-
+    
                 </div>
                 <div class="modal-footer">
                     <button type="submit"
@@ -35,6 +35,8 @@
 <script>
 import vSelect from "vue-select"
 import _ from 'lodash'
+import { EventBus } from '../../BusEvent.js';
+
 export default {
     name: 'CreateLabTests',
     data() {
@@ -49,8 +51,14 @@ export default {
     methods: {
         submitConditions: function () {
             for (let condition of this.selected) {
-                this.$http.post('http://localhost:3000/api/conditions', { conditionId: condition.id}, { headers: { Authorization: this.$root.key } })
+                this.$http.post('http://localhost:3000/api/conditions', { conditionId: condition.id }, { headers: { Authorization: this.$root.key } })
+                
+                EventBus.$emit('addCondition', condition);
             }
+
+
+
+            $('#create-condition').modal('hide');
         }
     }
 }

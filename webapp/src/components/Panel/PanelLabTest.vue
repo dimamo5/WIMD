@@ -27,6 +27,8 @@
 
 <script>
 import _ from 'lodash'
+import { EventBus } from '../../BusEvent.js';
+
 
 export default {
   name: 'PanelLabTest',
@@ -35,6 +37,13 @@ export default {
   },
   mounted: function () {
     this.parseInfo();
+
+    EventBus.$on('addLabTest', (labtest) => {
+      console.log(labtest)
+      labtest.date = Date.now();
+      this.labTests.push(labtest);
+    })
+
   },
   methods: {
     parseInfo: function () {

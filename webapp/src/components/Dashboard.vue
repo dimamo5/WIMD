@@ -25,7 +25,6 @@ import CreateLabTests from './modal/LabTests.vue'
 import CreateConditions from './modal/Conditions.vue'
 import CreateSymptoms from './modal/Symptoms.vue'
 
-
 export default {
   name: 'Dashboard',
   data() {
@@ -69,6 +68,7 @@ export default {
       .then(() => {
         this.loading = false;
       });
+
 
   }
 }

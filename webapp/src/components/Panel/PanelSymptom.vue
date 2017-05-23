@@ -26,6 +26,8 @@
 
 <script>
 import _ from 'lodash'
+import { EventBus } from '../../BusEvent.js';
+
 
 export default {
   name: 'PanelSymptom',
@@ -34,6 +36,11 @@ export default {
   },
   mounted: function () {
     this.parseInfo();
+
+    EventBus.$on('addSymptom', (symptom) => {
+      symptom.date = Date.now();
+      this.symptoms.push(symptom);
+    })
   },
   methods: {
     parseInfo: function () {

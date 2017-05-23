@@ -61,6 +61,7 @@ import SymptomPicker from '../SymptomPicker.vue'
 import SymptomsList from '../../assets/symptoms_bodypart.json'
 import Datepicker from 'vuejs-datepicker';
 import _ from 'lodash'
+import { EventBus } from '../../BusEvent.js';
 
 export default {
     name: 'CreateSymptoms',
@@ -80,8 +81,10 @@ export default {
         submitSymptoms: function () {
             for (let symptom of this.selected) {
                 this.$http.post('http://localhost:3000/api/symptoms', { symptomId: symptom.id, date: this.date }, { headers: { Authorization: this.$root.key } })
-
+                EventBus.$emit('addSymptom', symptom);
             }
+            $('#create-symptom').modal('hide');
+
         },
         updateSymptoms: function (bodyPart) {
             this.bodyPartSelected = bodyPart;
