@@ -13,7 +13,7 @@
                                        v-show="question.type=='group_multiple'"
                                        :question="question" />
                 <DiagnoseReport v-on:answer="submitAnswer"
-                                v-show="question.question=='report'"
+                                v-if="question.question=='report'"
                                 :conditions="question.conditions" />
             </div>
     
@@ -38,7 +38,7 @@ export default {
     name: 'Diagnose',
     components: { QuestionSingle, QuestionGroupSingle, QuestionGroupMultiple, DiagnoseReport },
     data() {
-        return { diagnoseId: null, question: {} }
+        return { diagnoseId: null, question: {}, step: 1 }
     },
     mounted: function () {
         this.$http.post('http://localhost:3000/api/diagnose', {}, { headers: { Authorization: this.$root.auth.key } })
@@ -49,12 +49,14 @@ export default {
     },
     methods: {
         submitAnswer: function (answers) {
-            console.log(answers);
+            this.step++;
             this.$http.post('http://localhost:3000/api/diagnose/' + this.diagnoseId, { answers }, { headers: { Authorization: this.$root.auth.key } })
                 .then((res) => {
-                    if (res.body.question == null) {
+                    if (typeof res.body.question == 'null' || this.step > 12) {
+                        this.question = {};
                         this.question.conditions = res.body.conditions;
                         this.question.question = "report";
+                        console.log('should render Report', this.question)
                     } else {
                         this.question = res.body.question;
                     }

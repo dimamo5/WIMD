@@ -1,7 +1,11 @@
 <template>
   <div class="panel panel-red">
-    <div class="panel-heading dark-overlay">Diagnotics <router-link tag="i" to="/diagnose" class="pull-right fa fa-plus options-header clicable"
-         aria-hidden="true"></router-link></div>
+    <div class="panel-heading dark-overlay">Diagnotics
+      <router-link tag="i"
+                   to="/diagnose"
+                   class="pull-right fa fa-plus options-header clicable"
+                   aria-hidden="true"></router-link>
+    </div>
     <div class="panel-body">
       <ul class="todo-list">
         <li class="todo-list-item"
@@ -10,7 +14,9 @@
             {{formatDate(diagnose.date)}}
           </div>
           <div class="symptom-info">
-            <span id="symptom-name">{{diagnose.result}}</span>
+            <span id="symptom-name">{{diagnose.name}}</span>
+            <span for="conditions-value">{{diagnose.severity}}</span>
+            <span for="conditions-value">{{diagnose.probability}}</span>
           </div>
           <div class="options pull-right clicable">
             <i class="fa fa-trash-o"
@@ -31,14 +37,16 @@ export default {
     return { diagnosis: [] }
   },
   mounted: function () {
-    //this.parseInfo();
+    this.parseInfo();
   },
   methods: {
     parseInfo: function () {
-      for (let symptom of this.$root.data.user.symptoms) {
-        let sympt = _.find(this.$root.data.symptoms, ['id', symptom.id]);
-        sympt.date = symptom.date;
-        this.symptoms.push(sympt);
+      for (let diagnose of this.$root.data.user.diagnosis) {
+        let diag = _.find(this.$root.data.conditions, ['id', diagnose.conditions[0].id]);
+        diag.date = diagnose.date;
+        diag.probability = diagnose.conditions[0].probability;
+        console.log(diag);
+        this.diagnosis.push(diag);
       }
     },
     formatDate: function (date) {
