@@ -4,7 +4,8 @@
          aria-hidden="true"
          data-toggle="modal"
          data-target="#create-condition"></i></div>
-    <div class="panel-body" style="max-height:400px;">
+    <div class="panel-body"
+         style="max-height:400px;">
       <ul class="todo-list">
         <li class="todo-list-item"
             v-for="condition in conditions">

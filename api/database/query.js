@@ -41,7 +41,7 @@ function register(password, mail) {
             age: null,
             gender: "",
             hasRegister: false,
-            diagnostics: [],
+            diagnosis: [],
             symptoms: [],
             conditions: [],
             riskFactors: [],
