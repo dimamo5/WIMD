@@ -27,7 +27,7 @@ const routes = [
     { path: '/login', component: Login },
     { path: '/info', component: InfoRegister },
     { path:'/diagnose',component: Diagnose},
-    {path : '*', component: NotFound }
+        {path : '*', component: NotFound }
 ]
 
 //Add history mode in future

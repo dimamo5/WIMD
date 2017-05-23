@@ -10,31 +10,33 @@
         </button>
         <a class="navbar-brand" href="#">WIMD</a>
       </div>
-      <!--<div id="navbar" class="navbar-collapse collapse">
+      <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Settings</a></li>
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Help</a></li>
+      <!-- <li><a href="#">Dashboard</a></li>
+           <li><a href="#">Settings</a></li>
+           <li><a href="#">Help</a></li> -->
+          <li data-toggle="modal" data-target="#profile" class="clicable"><a>{{name}}</a></li>
+          <li v-on:click="logout()" class="clicable"><a>Logout</a></li>
         </ul>
-      </div>-->
+      </div>
     </div>
-  </nav>
+    </nav>
 </template>
 
 <script>
+
+    import Profile from './modal/Profile.vue'
+
     export default {
         name: 'navbar',
         data() {
-            return { name: 'teste' }
-        },
-        mounted: function () {
-            //TODO ir buscar o nome do utilizador
+            return { name: this.$root.data.user.name }
         },
         methods: {
             logout: function () {
                 this.$root.key = null;
-                this.$router.push('login');
+                localStorage.removeItem('userToken');
+                this.$router.push('/login');
             }
         }
     }
