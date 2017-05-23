@@ -15,32 +15,28 @@
       <!-- <li><a href="#">Dashboard</a></li>
            <li><a href="#">Settings</a></li>
            <li><a href="#">Help</a></li> -->
-          <li v-on:click="profile()"><a href="">{{this.name}}</a></li>
-          <li v-on:click="logout()"><a href="">Logout</a></li>
+          <li data-toggle="modal" data-target="#profile" class="clicable"><a>{{name}}</a></li>
+          <li v-on:click="logout()" class="clicable"><a>Logout</a></li>
         </ul>
       </div>
     </div>
-  </nav>
+    </nav>
 </template>
 
 <script>
 
-    import Profile from './Profile.vue'
+    import Profile from './modal/Profile.vue'
 
     export default {
         name: 'navbar',
         data() {
             return { name: this.$root.data.user.name }
         },
-        mounted: function () {
-        },
         methods: {
             logout: function () {
                 this.$root.key = null;
-                this.$router.push('login');
-            },
-            profile: function () {
-                this.$router.push('profile');
+                localStorage.removeItem('userToken');
+                this.$router.push('/login');
             }
         }
     }

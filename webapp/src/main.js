@@ -10,28 +10,24 @@ import Dashboard from './components/Dashboard.vue'
 import Login from './components/Login.vue'
 import InfoRegister from './components/InfoRegister.vue'
 import Diagnose from './components/Diagnose.vue'
-import Profile from  './components/Profile.vue'
+import NotFound from './components/NotFound.vue'
 
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
 
-
-let auth = {
-  key:undefined
-}
-
-auth.key=localStorage.getItem("userToken");
 let data = {};
 
+console.log('Key in Main: ' + localStorage.getItem('userToken'));
+let key = localStorage.getItem('userToken')
 
 const routes = [
     { path: '/', component: Dashboard },
     { path: '/register', component: Register },
     { path: '/login', component: Login },
     { path: '/info', component: InfoRegister },
-    { path:'/diagnose', component: Diagnose},
-    { path: '/profile', component: Profile}
+    { path:'/diagnose',component: Diagnose},
+        {path : '*', component: NotFound }
 ]
 
 //Add history mode in future
@@ -44,6 +40,6 @@ const router = new VueRouter({
 new Vue({
     router,
     el: '#app',
-    data:{auth,data},
-    render: h => h(App)
+    data:{data,key},
+    render: h => h(App),
 })

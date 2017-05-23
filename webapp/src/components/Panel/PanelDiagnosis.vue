@@ -6,7 +6,7 @@
                    class="pull-right fa fa-plus options-header clicable"
                    aria-hidden="true"></router-link>
     </div>
-    <div class="panel-body">
+    <div class="panel-body" style="max-height:700px;">
       <ul class="todo-list">
         <li class="todo-list-item"
             v-for="diagnose in diagnosis">

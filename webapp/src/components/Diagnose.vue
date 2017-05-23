@@ -41,7 +41,7 @@ export default {
         return { diagnoseId: null, question: {}, step: 1 }
     },
     mounted: function () {
-        this.$http.post('http://localhost:3000/api/diagnose', {}, { headers: { Authorization: this.$root.auth.key } })
+        this.$http.post('http://localhost:3000/api/diagnose', {}, { headers: { Authorization: this.$root.key } })
             .then((res) => {
                 this.diagnoseId = res.body.id;
                 this.question = res.body.question;
@@ -50,7 +50,7 @@ export default {
     methods: {
         submitAnswer: function (answers) {
             this.step++;
-            this.$http.post('http://localhost:3000/api/diagnose/' + this.diagnoseId, { answers }, { headers: { Authorization: this.$root.auth.key } })
+            this.$http.post('http://localhost:3000/api/diagnose/' + this.diagnoseId, { answers }, { headers: { Authorization: this.$root.key } })
                 .then((res) => {
                     if (typeof res.body.question == 'null' || this.step > 12) {
                         this.question = {};

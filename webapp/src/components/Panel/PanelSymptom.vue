@@ -4,7 +4,7 @@
          aria-hidden="true"
          data-toggle="modal"
          data-target="#create-symptom"></i></div>
-    <div class="panel-body">
+    <div class="panel-body" style="max-height:700px;">
       <ul class="todo-list">
         <li class="todo-list-item"
             v-for="symptom in symptoms">
