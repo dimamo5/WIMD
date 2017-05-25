@@ -72,11 +72,10 @@ export default {
       },
       methods: {
             requestRegister: function () {
-                  this.$http.post('http://localhost:3000/auth/register', { password: this.Password, mail: this.Email })
+                  this.$http.post('http://localhost:3000/auth/register', { password: this.password, mail: this.email })
                         .then((response) => {
                               if (response.body.message === 'Success') {
-                                    this.$root.key = response.body.token;
-                                    this.$router.push('/');
+                                    this.$router.push('/login');
                               } else {
                                     alert('Mail/Password não estão correctas!');
                               }

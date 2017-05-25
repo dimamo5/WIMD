@@ -29,13 +29,13 @@
                            type="radio"
                            value="unknown"
                            v-model="question.value"
-                           v-on:click="submitAnswer(question.id)"> 
+                           v-on:click="submitAnswer(question.id)">
                     <label class="radio-label"
                            :for="'choice_unknown_'+question.id">Don't know
                     </label>
                 </div>
             </div>
-    
+
         </div>
     </div>
 </template>
@@ -43,7 +43,7 @@
 
 <script>
 export default {
-    name: 'QuestionGroupSingle',
+    name: 'QuestionGroupMultiple',
     props: ['question'],
     data() {
         return {}
@@ -82,6 +82,8 @@ export default {
 }
 
 .question-item {
-    border-bottom: 1px solid #E7EBEE;
+  border-bottom: 1px solid #BF0000;
+  padding: 5px;
 }
+
 </style>

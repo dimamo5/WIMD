@@ -140,7 +140,7 @@
 
 <style>
   .question-item {
-    border-bottom: 1px solid #E7EBEE;
+    border-bottom: 1px solid #BF0000;
     padding: 5px;
   }
 

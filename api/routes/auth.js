@@ -39,7 +39,7 @@ router.post('/register', function (req, res) {
         });
         return;
     }
-    db.register(req.body.mail, req.body.password)
+    db.register(req.body.password,req.body.mail)
         .then((user) => {
             if (!user) {
                 res.status(500).json({

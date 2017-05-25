@@ -19,20 +19,16 @@
 </template>
 
 <script>
-import * as PanelLabTest from './Panel/PanelLabTest.vue'
-import * as PanelCondition from './Panel/PanelCondition.vue'
-import * as PanelSymptom from './Panel/PanelSymptom.vue'
+import PanelLabTest from './Panel/PanelLabTest.vue'
+import PanelCondition from './Panel/PanelCondition.vue'
+import PanelSymptom from './Panel/PanelSymptom.vue'
 import PanelDiagnosis from './Panel/PanelDiagnosis.vue'
 
   export default {
     name: 'PanelMenu',
     components:{PanelLabTest,PanelCondition,PanelSymptom,PanelDiagnosis},
     data() {
-      return {symptoms:[] }
-    },
-    mounted: function () {
-    },
-    methods:{
+      return {}
     }
   }
 

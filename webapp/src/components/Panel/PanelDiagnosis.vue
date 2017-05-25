@@ -1,6 +1,6 @@
 <template>
   <div class="panel panel-red">
-    <div class="panel-heading dark-overlay">Diagnotics
+    <div class="panel-heading dark-overlay">Diagnosis
       <router-link tag="i"
                    to="/diagnose"
                    class="pull-right fa fa-plus options-header clicable"
@@ -32,7 +32,7 @@
 import _ from 'lodash'
 
 export default {
-  name: 'PanelSymptom',
+  name: 'PanelDiagnosis',
   data() {
     return { diagnosis: [] }
   },

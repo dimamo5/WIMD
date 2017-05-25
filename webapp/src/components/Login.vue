@@ -73,7 +73,6 @@ export default {
         .then((response) => {
           if (response.body.message === 'Success') {
             this.$root.key = response.body.token
-            this.$root.data.mail = this.mail;
             localStorage.setItem('userToken', response.body.token);
             this.$router.push('/');
           } else {

@@ -1,55 +1,55 @@
 <template>
-    <div style="margin-top: 80px;">
-        <p class="question-text">{{question.text}}</p>
-        <div class="answers-group row">
-            <div class="col-sm-2 col-md-offset-3">
-                <div class="answer" v-on:click="submitAnswer('present')">
-                    <i class="fa fa-check fa-3x"
-                       aria-hidden="true"
-                       style="color:green;"></i> Yes
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <div class="answer" v-on:click="submitAnswer('absent')">
-                    <i class="fa fa-times fa-3x"
-                       aria-hidden="true"
-                       style="color:red;"></i>
-                    <span>No</span>
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <div class="answer" v-on:click="submitAnswer('unknown')">
-                    <i class="fa fa-arrow-right fa-3x"
-                       aria-hidden="true"
-                       style="color:grey;"></i>
-                    <span>Don't know</span>
-                </div>
-            </div>
+  <div style="margin-top: 80px;">
+    <p class="question-text">{{question.text}}</p>
+    <div class="answers-group row">
+      <div class="col-sm-2 col-md-offset-3">
+        <div class="answer" v-on:click="submitAnswer('present')">
+          <i class="fa fa-check fa-3x"
+             aria-hidden="true"
+             style="color:green;"></i> Yes
         </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="answer" v-on:click="submitAnswer('absent')">
+          <i class="fa fa-times fa-3x"
+             aria-hidden="true"
+             style="color:red;"></i>
+          <span>No</span>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="answer" v-on:click="submitAnswer('unknown')">
+          <i class="fa fa-arrow-right fa-3x"
+             aria-hidden="true"
+             style="color:grey;"></i>
+          <span>Don't know</span>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 
 <script>
-export default {
+  export default {
     name: 'QuestionSingle',
-    props:['question'],
+    props: ['question'],
     data() {
-        return {}
+      return {}
     },
     mounted: function () {
     },
     methods: {
-        submitAnswer:function(value){
-            this.$emit('answer',[{id:this.question.items[0].id,choice_id:value}])
-        }
+      submitAnswer: function (value) {
+        this.$emit('answer', [{id: this.question.items[0].id, choice_id: value}])
+      }
     }
-}
+  }
 
 </script>
 
 <style scoped>
-.question-text {
+  .question-text {
     margin: 0 auto 32px auto;
     opacity: 1;
     font-size: 22px;
@@ -57,13 +57,14 @@ export default {
     font-weight: 500;
     max-width: 550px;
     text-align: center;
-}
+  }
 
-.answer:hover {
+  .answer:hover {
     background-color: #F9FAFB;
-}
+    border: 2px solid #BF0000;
+  }
 
-.answer {
+  .answer {
     position: relative;
     display: inline-block;
     width: 110px;
@@ -77,10 +78,10 @@ export default {
     outline: none;
     cursor: pointer;
     padding: 15px;
-}
+  }
 
-.answer i {
+  .answer i {
     width: 100%;
     margin-bottom: 10px;
-}
+  }
 </style>
